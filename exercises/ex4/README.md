@@ -1,11 +1,5 @@
 # Exercise 4 - Integrate with SAP Mobile Start
 
-## Navigation
-
-| Previous| Next |
-|---|---|
-| [Exercise 3](../ex3/README.md) | [Conclusion](../Conclusion.md) |
-
 ## Estimated time
 
 :clock4: 25 minutes

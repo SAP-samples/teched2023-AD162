@@ -1,11 +1,5 @@
 # AD162 - Conclusion
 
-## Navigation
-
-| Previous| Next |
-|---|---|
-| [Exercise 4](./ex4/README.md) | [Back To Overview](./README.md) |
-
 You're a :star: 
 
 ![Race Finish](./assets/images/img-3.jpg)

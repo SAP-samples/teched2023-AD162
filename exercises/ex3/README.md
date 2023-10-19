@@ -114,15 +114,11 @@ Both online and offline applications can be modified by users. Online applicatio
     }
     ```
 
-13. Remove the default picker item value. 
-
-    ![MDK](images/3.1.12.gif)
-
-14. Drag and drop a **Simple Property** Form cell control onto the `Ìncident_Edit.page` area. This allows a technician to manually input or scan the ID of the defective device.
+13. Drag and drop a **Simple Property** Form cell control onto the `Ìncident_Edit.page` area. This allows a technician to manually input or scan the ID of the defective device.
 
     ![MDK](images/3.1.13.gif)
 
-15. Provide the following information:
+14. Provide the following information:
 
     | Property | Value |
     |----|----|
@@ -133,11 +129,11 @@ Both online and offline applications can be modified by users. Online applicatio
 
     ![MDK](images/3.1.14.png)
 
-16. Drag and drop an **Attachment** Form Cell control onto the `Ìncident_Edit.page` area. This allows a technician to upload an image of the device they have repaired.  
+15. Drag and drop an **Attachment** Form Cell control onto the `Ìncident_Edit.page` area. This allows a technician to upload an image of the device they have repaired.  
    
     ![MDK](images/3.1.15.gif)
 
-17. Provide the following information:          
+16. Provide the following information:          
 
     | Property | Value |
     |----|----|
@@ -148,11 +144,11 @@ Both online and offline applications can be modified by users. Online applicatio
 
     ![MDK](images/3.1.16.png)
 
-18. Now, drag and drop an **Inline Signature Capture** Form Cell control onto the `Ìncident_Edit.page` area. This enables a technician to collect a digital signature from the customer to confirm that the issue has been resolved.
+17. Now, drag and drop an **Inline Signature Capture** Form Cell control onto the `Ìncident_Edit.page` area. This enables a technician to collect a digital signature from the customer to confirm that the issue has been resolved.
    
     ![MDK](images/3.1.17.gif)
 
-19. Provide the following information:          
+18. Provide the following information:          
 
     | Property | Value |
     |----|----|
@@ -169,21 +165,21 @@ Both online and offline applications can be modified by users. Online applicatio
     >`WatermarkText:` The watermark text will be displayed in the captured signature image.
     >![MDK](images/3.1.19.gif)
 
-20. If the `In Process` option is chosen from the Status list picker during an Incident modification, the options for uploading a Device Image and capturing customer signature should be hidden. However, if the `Closed` status is selected, the technician should be provided with options to upload an image of the device and collect the customer's signature. This logic needs to be programmatically handled within the application.
+19. If the `In Process` option is chosen from the Status list picker during an Incident modification, the options for uploading a Device Image and capturing customer signature should be hidden. However, if the `Closed` status is selected, the technician should be provided with options to upload an image of the device and collect the customer's signature. This logic needs to be programmatically handled within the application.
 
     Select `Status` List picker control, navigate to the **Event** tab, Click on **Create a rule/action** for `OnValueChange` event.
 
     ![MDK](images/3.1.20.png)
 
-21. Next, select **Object Type** as **Rule** and **Folders** as `/MDKApp/Rules/Incident`. Click **OK**.  
+20. Next, select **Object Type** as **Rule** and **Folders** as `/MDKApp/Rules/Incident`. Click **OK**.  
 
     ![MDK](images/3.1.10.png)
 
-22. Provide the name `StatusChangeProtocol` to your rule, Click **Finish**.
+21. Provide the name `StatusChangeProtocol` to your rule, Click **Finish**.
 
     ![MDK](images/3.1.21.png)
 
-23. Replace the generated snippet with the following code.
+22. Replace the generated snippet with the following code.
 
     ```JavaScript
     /**

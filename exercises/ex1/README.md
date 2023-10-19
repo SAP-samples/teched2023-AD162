@@ -48,7 +48,7 @@ We have imported a functional project into your dev space to help you get starte
 
 You will now run the initial application on the Mobile client installed on your device by scanning the on-boarding QR code. 
 
-1. Click the `Application.app` to open it in MDK Application Editor and then click the **Application QR Code** icon.
+1. Expand the `MDKApp` project, click the `Application.app` to open it in MDK Application Editor and then click the **Application QR Code** icon.
 
     ![MDK](images/1.3.1.png)
 
@@ -82,9 +82,7 @@ You will now run the initial application on the Mobile client installed on your 
 
     ![MDK](images/1.3.8.png)
 
-9. Once the Cloud Foundry target is set, the `Cloud Foundry Sign in` tab will automatically close. Click on the QR code icon again.
-    
-10. The On-boarding QR code is now displayed. Leave the Onboarding dialog box open as you proceed to the next step.
+9. Once the Cloud Foundry target is set, the `Cloud Foundry Sign in` tab will automatically close. The On-boarding QR code is now displayed. Leave the Onboarding dialog box open as you proceed to the next step.
 
     ![MDK](images/1.3.9.png)
 

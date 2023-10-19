@@ -7,15 +7,23 @@ export default function SetUserLogLevel(context) {
                 switch (listPickerValue) {
                     case 'Debug':
                         logger.setLevel('Debug');
+                        ShowTraceOptions(context, false);
                         break;
                     case 'Error':
                         logger.setLevel('Error');
+                        ShowTraceOptions(context, false);
                         break;
                     case 'Warn':
                         logger.setLevel('Warn');
+                        ShowTraceOptions(context, false);
                         break;
                     case 'Info':
                         logger.setLevel('Info');
+                        ShowTraceOptions(context, false);
+                        break;
+                    case 'Trace':
+                        logger.setLevel('Trace');
+                        ShowTraceOptions(context, true);
                         break;
                     default:
                         // eslint-disable-next-line no-console
@@ -28,4 +36,12 @@ export default function SetUserLogLevel(context) {
         logger.log(String(exception), 'Error');
         return undefined;
     }
+}
+
+function ShowTraceOptions(context, tracingEnabled) {
+    let categories = context.getPageProxy().getControl('SectionedTable').getControl('TracingCategoriesListPicker');
+    let odataTrace = context.getPageProxy().getControl('SectionedTable').getControl('odataTrace');
+
+    categories.setVisible(tracingEnabled);
+    odataTrace.setVisible(tracingEnabled);
 }

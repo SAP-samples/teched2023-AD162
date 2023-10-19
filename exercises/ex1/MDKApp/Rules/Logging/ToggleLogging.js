@@ -1,7 +1,7 @@
 export default function ToggleLogging(context) {
     try {
         var logger = context.getLogger();
-        const sectionedTable = context.getPageProxy().getControl('SectionedTable0');
+        const sectionedTable = context.getPageProxy().getControl('SectionedTable');
         const fcsection = sectionedTable.getSection('FormCellSection0');
         const enableLogSwitch = fcsection.getControl('EnableLogSwitch');
         const logLevelListPicker = fcsection.getControl('LogLevelListPicker');

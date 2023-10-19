@@ -14,7 +14,7 @@
 					"Target": {
 						"EntitySet": "Incident",
 						"Service": "/MDKApp/Services/IncidentManagement.service",
-						"QueryOptions": "$filter=serviceWorker_ID eq XXX"
+						"QueryOptions": "$expand=customer&$filter=serviceWorker_ID eq 150"
 					},
 					"_Name": "SectionObjectTable0",
 					"EmptySection": {
@@ -22,10 +22,15 @@
 						"FooterVisible": false
 					},
 					"ObjectCell": {
+						"ContextMenu": {
+							"Items": [],
+							"PerformFirstActionWithFullSwipe": true
+						},
 						"Title": "{Title}",
 						"Subhead": "ID: {ID}",
 						"Description": "{Description}",
 						"StatusText": "{Urgency}",
+						"StatusImage": "/MDKApp/Rules/Incident/ShowPriorityImage.js",
 						"SubstatusText": "{Status}",
 						"PreserveIconStackSpacing": false,
 						"AccessoryType": "disclosureIndicator",
@@ -34,17 +39,11 @@
 							"Avatars": [
 								{
 									"Image": "/MDKApp/Services/IncidentManagement.service/{@odata.readLink}/DeviceImage"
-									
 								}
-								
 							],
 							"ImageIsCircular": true
 						},
-						"OnPress": "/MDKApp/Actions/Incident/NavToIncident_Detail.action",
-						"ContextMenu": {
-							"Items": [],
-							"PerformFirstActionWithFullSwipe": true
-						}
+						"OnPress": "/MDKApp/Actions/Incident/NavToIncident_Detail.action"
 					},
 					"Search": {
 						"Enabled": true,
@@ -69,6 +68,9 @@
 	"_Name": "Incident_List",
 	"Caption": "Incidents",
 	"PrefersLargeCaption": true,
+		"PullDown": {
+		"OnPulledDown": "/MDKApp/Actions/Service/SyncStartedMessage.action"
+	},
 	"ActionBar": {
 		"Items": [
 			{

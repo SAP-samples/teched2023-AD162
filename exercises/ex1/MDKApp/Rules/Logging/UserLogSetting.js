@@ -3,10 +3,13 @@ export default function UserLogSetting(context) {
     try {
         var logger = context.getLogger();
 
-        const sectionedTable = context.getControl('SectionedTable0');
+        const sectionedTable = context.getControl('SectionedTable');
         const fcsection = sectionedTable.getSection('FormCellSection0');
-       const enableLogSwitch = fcsection.getControl('EnableLogSwitch');
-       const logLevelListPicker = fcsection.getControl('LogLevelListPicker');
+        const enableLogSwitch = fcsection.getControl('EnableLogSwitch');
+        const logLevelListPicker = fcsection.getControl('LogLevelListPicker');
+        const traceCategory = fcsection.getControl('TracingCategoriesListPicker');
+        const odataTrace = fcsection.getControl('odataTrace');
+        
 
         //Persist the user logging preferences
         if (logger) {
@@ -32,6 +35,11 @@ export default function UserLogSetting(context) {
                     logLevelListPicker.setValue([logLevel]);
                 }
             }
+            if (logLevel === 'Trace') {
+                traceCategory.setVisible(true);
+                odataTrace.setVisible(true);
+            }
+            
             //Upon selecting a value in the List picker and clicking the back button 
             //will enable the onload page rule. This will set the selected value
             //in the control

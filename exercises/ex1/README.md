@@ -56,7 +56,7 @@ You will now run the initial application on the Mobile client installed on your 
 
     ![MDK](images/1.3.2.png)
 
-3. If you don't have an active CF session, you may be prompted to log into Cloud Foundry. If prompted, click **Login** to continue. If not, proceed directly to step 10-.
+3. If you don't have an active CF session, you may be prompted to log into Cloud Foundry. If prompted, click **Login** to continue. If not, proceed directly to step 9.
 
     ![MDK](images/1.3.3.png)
 
@@ -78,11 +78,11 @@ You will now run the initial application on the Mobile client installed on your 
 
     ![MDK](images/1.3.7.png)
 
-8. You are now signed in to the Cloud Foundry. Set the Cloud Foundry target by choosing the appropriate Organization and space from the dropdown menu and then click on **Apply**.
+8. You are now signed in to the Cloud Foundry. Set the Cloud Foundry target by choosing the appropriate Organization and space from the dropdown menu and then click on **Apply**. Once the Cloud Foundry target is set, the `Cloud Foundry Sign in` tab will automatically close.
 
     ![MDK](images/1.3.8.png)
 
-9. Once the Cloud Foundry target is set, the `Cloud Foundry Sign in` tab will automatically close. The On-boarding QR code is now displayed. Leave the Onboarding dialog box open as you proceed to the next step.
+9. The On-boarding QR code is now displayed. Leave the Onboarding dialog box open as you proceed to the next step.
 
     ![MDK](images/1.3.9.png)
 

@@ -1,27 +1,38 @@
 # Exercise 3 - Modify an Incident Record
 
+## Estimated Time
+
+:clock4: 35 minutes
+
+## Objective
+
 Incidents are assigned to a Technician by a call center support representative. At the start of their day, the technician commences work on these incidents while at the customer's location.
-- If the status of an incident is `new`, the technician has the ability to update it to `In Process`. They should be able to enter the ID of the defective device, either by manually typing it or scanning the device's barcode.
-- The technician is also capable of updating the status from `new` to `Closed` or from `In Process` to `Closed` following the resolution of an issue. Ensuring that they:
-    - manually input or update the ID of the defective device or scan the device's barcode,
-    - upload a photograph of the working device, and
-    - acquire the digital signature of the customer confirming that the issue has been resolved, is crucial.
+
+- If the status of an incident is `New`, the technician can update it to `In Process`.
+- The technician can also update the status to `Closed` after resolving the customer's issue.
+- To close an incident, a technician must:
+    - Update the ID of the defective device either by manually entering the code or scanning the device's barcode.
+    - Upload a photograph of the working device.
+    - Acquire the digital signature of the customer confirming that the issue has been resolved.
 - If an incident's status is already `Closed`, the technician will not see any option to modify the details. They have the ability to view its details and open the working device's image.
 
-- [Exercise 3.1 - Create a new page for modifying Incident Information](#exercise-31---create-a-new-page-for-modifying-incident-information)
-- [Exercise 3.2 - Add a Cancel Button on the Update incident Detail page](#exercise-32---add-a-cancel-button-on-the-update-incident-detail-page)
-- [Exercise 3.3 - Store the updated data locally](#exercise-33---store-the-updated-data-locally)
-- [Exercise 3.4 - Navigate to the Incident Edit page](#exercise-34---navigate-to-the-incident-edit-page)
-- [Exercise 3.5 - Redeploy the application](#exercise-35---redeploy-the-application)
-- [Exercise 3.6 - Update the MDK app with new metadata](#exercise-36---update-the-mdk-app-with-new-metadata)
-- [Summary](#summary)
+| Exercise Number   | Title                                                 |
+|-------------------|-------------------------------------------------------|
+| [Exercise 3.1](#exercise-31---create-a-new-page-for-modifying-incident-information)      | Create a new page for modifying Incident Information  |
+| [Exercise 3.2](#exercise-32---add-a-cancel-button-on-the-update-incident-detail-page)      | Add a Cancel Button on the Update incident Detail page|
+| [Exercise 3.3](#exercise-33---store-the-updated-data-locally)      | Store the updated data locally                        |
+| [Exercise 3.4](#exercise-34---navigate-to-the-incident-edit-page)      | Navigate to the Incident Edit page                     |
+| [Exercise 3.5](#exercise-35---redeploy-the-application)      | Redeploy the application                               |
+| [Exercise 3.6](#exercise-36---update-the-mdk-app-with-new-metadata)      | Update the MDK app with new metadata                   |
 
 
 ### Exercise 3.1 - Create a new page for modifying Incident Information
 
-Both online and offline applications can be modified by users. Online application changes are saved to the backend immediately, while offline ones are stored locally until they are synced with an Upload action.<br/> In this step, you'll create a Section page with a Form Cell section for the Form Cell controls. This page will display a subset of items from the Incident Detail page, specifically the fields editable by the technician.
+Both online and offline applications can be modified by users. Online application changes are saved to the backend immediately, while offline ones are stored locally until they are synced with an Upload action.
 
-1. Navigate to **Pages** | Right-click the **Incident** folder | **MDK: New Page**.
+In this step, you'll create a Section page with a Form Cell section for the Form Cell controls. This page will display a subset of items from the Incident Detail page, specifically the fields editable by the technician.
+
+1. Navigate to **Pages** &rarr; Right-click the **Incident** folder &rarr; **MDK: New Page**.
 
     ![MDK](images/3.1.1.png)
 
@@ -51,7 +62,7 @@ Both online and offline applications can be modified by users. Online applicatio
 
     ![MDK](images/3.1.6.gif)
 
->The Form Cell section is used to contain Form Cell controls on a section page.
+    >The Form Cell section is used to contain Form Cell controls on a section page.
 
 7. You will now add Form Cell controls to the Form Cell section. Expand the **Form Cell Controls** group, drag and drop a **List Picker** onto the Page area.
 
@@ -69,18 +80,19 @@ Both online and offline applications can be modified by users. Online applicatio
 
     ![MDK](images/3.1.8.png)
 
-    >`AllowEmptySelection:` This disables or enables the selection of empty value set.
-    >`IsPickerDismissedOnSelection:` This enables automatic dismissal of the list view after an entry is selected.
-    >`AllowDefaultValueIfOneItem:` This enables automatic selection of the default value for the List Picker if only one item is available. It's applicable when a technician updates the status of an incident from `In Process` to `Closed`.
+    >- `AllowEmptySelection:` This disables or enables the selection of empty value set.
+    >- `IsPickerDismissedOnSelection:` This enables automatic dismissal of the list view after an entry is selected.
+    >- `AllowDefaultValueIfOneItem:` This enables automatic selection of the default value for the List Picker if only one item is available. It's applicable when a technician updates the status of an incident from `In Process` to `Closed`.
 
 9. When a technician is updating the status of an incident, they should be presented with specific options depending on the current status of the incident.
-    - If the current status is `New`, the technician should see the options `In Process` and `Closed`.
-    - However, if the current status is `In Process`, the technician should only see the `Closed` option. <br/> This behavior should be built into your application's programming logic. <br/> In **Properties** pane, for the `PickerItems` property, choose **Rule**. Click on the three-dot icons and select **Create a Rule**.
+   - If the current status is `New`, the technician should see the options `In Process` and `Closed`.
+   - However, if the current status is `In Process`, the technician should only see the `Closed` option. This behavior should be built into your application's programming logic.
+   - In **Properties** pane, for the `PickerItems` property, choose **Rule**. Click on the three-dot icons and select **Create a Rule**.
 
     ![MDK](images/3.1.9.gif)
 
 10. Choose `/MDKApp/Rules/Incident` path for  *Folders* and click **OK**. This keeps all related files in a related folder.
-    
+
     ![MDK](images/3.1.10.png)
 
 11. In the **Base Information** step, enter the Rule **Name** as `StatusPicker` and then click **Finish**.
@@ -130,7 +142,7 @@ Both online and offline applications can be modified by users. Online applicatio
     ![MDK](images/3.1.14.png)
 
 15. Drag and drop an **Attachment** Form Cell control onto the `Incident_Edit.page` area. This allows a technician to upload an image of the device they have repaired.  
-   
+
     ![MDK](images/3.1.15.gif)
 
 16. Provide the following information:          
@@ -145,7 +157,7 @@ Both online and offline applications can be modified by users. Online applicatio
     ![MDK](images/3.1.16.png)
 
 17. Now, drag and drop an **Inline Signature Capture** Form Cell control onto the `Incident_Edit.page` area. This enables a technician to collect a digital signature from the customer to confirm that the issue has been resolved.
-   
+
     ![MDK](images/3.1.17.gif)
 
 18. Provide the following information:          
@@ -160,10 +172,9 @@ Both online and offline applications can be modified by users. Online applicatio
 
     ![MDK](images/3.1.18.png)
 
-    >`ShowTimestampInImage:` The datetime will be displayed in the captured signature image.
-    >`TimestampFormatter:` Set a DateTime format pattern string for the timestamp on the captured signature image.
-    >`WatermarkText:` The watermark text will be displayed in the captured signature image.
-    >![MDK](images/3.1.19.gif)
+    >- `ShowTimestampInImage:` The datetime will be displayed in the captured signature image.
+    >- `TimestampFormatter:` Set a DateTime format pattern string for the timestamp on the captured signature image.
+    >- `WatermarkText:` The watermark text will be displayed in the captured signature image.
 
 19. If the `In Process` option is chosen from the Status list picker during an Incident modification, the options for uploading a Device Image and capturing customer signature should be hidden. However, if the `Closed` status is selected, the technician should be provided with options to upload an image of the device and collect the customer's signature. This logic needs to be programmatically handled within the application.
 
@@ -206,23 +217,24 @@ Both online and offline applications can be modified by users. Online applicatio
 
 ### Exercise 3.2 - Add a Cancel Button on the Update incident Detail page
 
-While updating the incident details, you may want to close the current page and cancel or interrupts any ongoing process.
+While updating the incident details, you may want to close the current page and cancel or interrupt any ongoing process.
 
-1. In the`Incident_Edit.page`, drag and drop an **Action Bar Item** control to the upper left corner of the action bar.
+1. In the `Incident_Edit.page`, drag and drop an **Action Bar Item** control to the upper left corner of the action bar.
 
     ![MDK](images/3.2.1.png)
 
->Action Bar Item is a button that users can use to trigger actions when pressed. You can add an Action Bar Item only to the Action Bar at the top of the page.
+    >The Action Bar Item is a button that users can use to trigger actions when pressed. You can add an Action Bar Item only to the Action Bar at the top of the page.
 
 2. In the Properties pane, click the **link icon** to open the object browser for the **System Item** property. Double-click the **Cancel** type and click **OK**.
 
     ![MDK](images/3.2.2.png)
 
->System Item are predefined system-supplied icon or text and can overwrite `Caption` and `Icon` properties if specified.
+    >System Items are predefined system-supplied icons or text and can overwrite `Caption` and `Icon` properties if specified.
 
 3. Navigate to the **Events** tab. Click the three-dot icon, then click the **Object Browser** and bind it to `CloseModalPage_Cancel.action`. This enables you to close pages with the option to either terminate ongoing events or wait until they are complete.
 
     ![MDK](images/3.2.3.png)
+
 
 ### Exercise 3.3 - Store the updated data locally
 
@@ -356,7 +368,7 @@ To update the `Status` and `DeviceID` properties of Incident entity, the OData U
 
 23. Click Finish. The action editor will open with the `Incident_UploadStream.action` loaded.
 
-24. When the `Incident_UploadStream.action` is executed, you may want to display sucess message and may want to close the page. When it fails due to some reason, you may want to display an error. <br/> In the `Incident_UploadStream.action`, scroll down and expand the **Common Action Properties** section. Click on the link icon for `Success Action` property to open the object browser and bind to an existing message action `GenericToastMessage.action`.
+24. When the `Incident_UploadStream.action` is executed, you may want to display sucess message and close the page. When it fails due to some reason, you may want to display an error. <br/> In the `Incident_UploadStream.action`, scroll down and expand the **Common Action Properties** section. Click on the link icon for `Success Action` property to open the object browser and bind to an existing message action `GenericToastMessage.action`.
 
     ![MDK](images/3.3.18.png) 
 
@@ -371,7 +383,7 @@ To update the `Status` and `DeviceID` properties of Incident entity, the OData U
     | `Message` | `Entity updated` |
     | `Duration` | `2` |
     | `Animated` | Select `true` from the dropdown option |
-    | `Succes Action` | Click on the link icon and bind it to `CloseModalPage_Complete.action` |
+    | `Common Action Properties` &rarr; `Succes Action` | Click on the link icon and bind it to `CloseModalPage_Complete.action` |
 
     ![MDK](images/3.3.20.png) 
 
@@ -477,7 +489,7 @@ To navigate from the Incident Detail page to a new page for modifying incident i
 | :---        |    :----:   |          ---: |
 | 1. Tap the **Check for Updates** option in the `User menu` on the Incident page.      | ![MDK](images/3.6.1.png)       | ![MDK](images/3.6.2.png)   |
 | 2. You will see a `New Version Available!` pop-up. Tap **Now**.     | ![MDK](images/3.6.3.png)       | ![MDK](images/3.6.4.png)   |
-| 3. Navigate to an Incident detail page. <br/> If an incident's status is already `Closed`, you will not see the Edit option on its details. n. Instead, you will have the ability to open the working device's image. <br/>  If an incident's status is `New` or `In Process`, you will the Edit option. | ![MDK](images/3.6.5.gif)       | ![MDK](images/3.6.6.gif)   |
+| 3. Navigate to an Incident detail page. <br/> If an incident's status is already `Closed`, you will not see the Edit option on its details. Instead, you will have the ability to open the working device's image. <br/>  If an incident's status is `New` or `In Process`, you will only see the Edit option. | ![MDK](images/3.6.5.gif)       | ![MDK](images/3.6.6.gif)   |
 | 4. Update an Incident. <br/> you can update the status from `new` to `In Process` or `Closed` or from `In Process` to `Closed`. <br/> When updating it to `In Process`, you should be able to enter the ID of the defective device, either by manually typing it or scanning the device's barcode, but you won't have options for uploading a device image or capturing the customer's signature. <br/> When updating it to `Closed`, you should be able to enter the ID of the defective device, either by manually typing it or scanning the device's barcode, and you should also see the options for uploading a device image and capturing customer's signature. <br/> To scan the device's barcode, you can use the below image. ![MDK](images/3.6.9.png) | ![MDK](images/3.6.7.gif)       | ![MDK](images/3.6.8.gif)   |
 | 5. Since this is an Offline application, the changes are saved to the local store, which needs to be sent or uploaded to the backend explicitly. <br/> Navigate to the Incident list page, pull down on the incident list to upload changes to the backend, OR click on the user menu icon and select **Sync Changes**. You will see a successful message.    | ![MDK](images/3.6.10.gif)       | ![MDK](images/3.6.11.gif)   |
 

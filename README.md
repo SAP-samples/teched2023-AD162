@@ -15,7 +15,7 @@ This hands-on exercise will assist you in learning how to **build mobile applica
 Accelerate development by using **SAP Build Code** to consume a SAP Cloud Application Programming (CAP) Model service for mobile development. Build a native, cross-platform mobile application using mobile development kit and bring all of your work together on the SAP Mobile Start app - the launchpad for mobile apps from SAP.
 
 ## Requirements
-In order to complete the session exercises below, first complete the [pre-requisites](ex0/README.md).
+In order to complete the session exercises below, first complete the [pre-requisites](./exercises/ex0/README.md).
 
 ## Use Case
 ACME is a popular electronics company. ACME hires call center support representatives to process and manage customer incidents. A call center support representative (Processor) receives a phone call from an existing customer and creates a new incident on behalf of the customer. ACME employs technicians who use mobile apps to process these incidents.

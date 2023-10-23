@@ -9,7 +9,7 @@ Last year, SAP launched SAP Build to empower business experts to construct appli
 
 <p align="center"><img src="./assets/images/img-build-code-benefits.png" width="100%" /></p>
 
-This hands-on exercise will assist you in learning how to construct mobile applications using **SAP Build Code**.
+This hands-on exercise will assist you in learning how to **build mobile applications using SAP Build Code**.
 
 ## Description
 Accelerate development by using **SAP Build Code** to consume a SAP Cloud Application Programming (CAP) Model service for mobile development. Build a native, cross-platform mobile application using mobile development kit and bring all of your work together on the SAP Mobile Start app - the launchpad for mobile apps from SAP.

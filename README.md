@@ -20,12 +20,12 @@ In order to complete the session exercises below, first complete the [pre-requis
 ## Use Case
 ACME is a popular electronics company. ACME hires call center support representatives to process and manage customer incidents. A call center support representative (Processor) receives a phone call from an existing customer and creates a new incident on behalf of the customer. ACME employs technicians who use mobile apps to view process these incidents.
 
-### Incident Creation (AD161)
+### Incident Creation ([AD161](https://github.com/SAP-samples/teched2023-AD161))
 - Mary reports an issue she is facing with her ACME electronic device.
 - Raj, a support representative, logs the incident using the Incident Management app.
 - Raj records Mary's contact information and issue details.
 
-### Incident Resolution (AD162)
+### Incident Resolution (AD162 - This Hands On Session)
 - Anna, a technician, uses the ACME Technician Incident Management app.
 - Anna views the tasks assigned to her.
 - Anna selects a task to view the details.

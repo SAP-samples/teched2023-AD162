@@ -8,10 +8,10 @@ Congratulations on successfully completing AD162. We hope you enjoyed the sessio
 
 Enjoy the rest of SAP TechEd 2023.
 
-![ADAI More Learning](./assets/images/img-4.png)
+![ADAI More Learning](./assets/images/img-build-code-conclusion.png)
 
 ## Navigation
 
 | Previous| Next |
 |---|---|
-| [Exercise 4](exercises/ex4/README.md) | [Back To Overview](./README.md) |
+| [Exercise 4](./ex4/README.md) | [Back To Overview](./README.md) |

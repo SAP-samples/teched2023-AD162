@@ -2,7 +2,7 @@
 
 ## Estimated time
 
-:clock4: 25 minutes
+:clock4: 10 minutes
 
 ## Objective
 
@@ -58,27 +58,29 @@ The SAP Mobile Start app is your native entry point to SAP’s mobile universe. 
       <img src="./images/5_qr.png" width="100%" />
    </p>
 
+   > Ensure that you have chosen the right platform iOS / Android above.
+
 9. Open **SAP Mobile Start** on your mobile phone. If you don't have it yet, install it from the App Store or Google Play. You can use the following installation QRs to find it faster:
 
    <p align="center">
       <img src="./images/download.png" width="100%" />
    </p>
 
-10. After agreeing to the end user license agreement and the privacy policy, tap on the **Scan** button in SAP Mobile Start.
+10. After agreeing to the end user license agreement and the privacy policy, tap on the **Scan / Get Started** button in SAP Mobile Start.
 
-   <p align="center">
-      <img src="./images/5_scan.png" width="50%" />
-   </p>
+   | iOS | Android |
+   | --- | --- |
+   | ![iOS](images/5_scan_ios.png) | ![Android](images/5_scan_and.jpeg) |
 
-11. You will be asked to login with your provided credentials. Use the email address in the format `ad162-0##@education.cloud.sap` (replacing `##` with your number) and the password.
+11. You will be asked to login with your provided credentials. Use the email address in the format `ad162-###@education.cloud.sap` (replacing `##` with your number) and the password.
 
 12. Tap on the **Apps** tab at the bottom tab bar. You can see the app integrating our mobile app built in this course under the section **AD162 Apps**
 
-   <p align="center">
-      <img src="./images/5_mobile_start_app.jpeg" width="50%" />
-   </p>
+   | iOS | Android |
+   | --- | --- |
+   | ![iOS](images/5_mobile_start_app_ios.jpeg) | ![Android](images/5_mobile_start_app_and.jpeg) |
 
-12. Tapping on it will launch the **Mobile Services Client** in order to try out your app. If it is not yet installed, you will be redirected to the App Store or Google Play.
+13. Tapping on it will launch the **Mobile Services Client** in order to try out your app. If it is not yet installed, you will be redirected to the App Store or Google Play.
 
 ## Summary
 

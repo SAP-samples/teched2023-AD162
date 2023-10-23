@@ -2,7 +2,7 @@
 
 ## Estimated Time
 
-:clock4: 35 minutes
+:clock4: 40 minutes
 
 ## Objective
 

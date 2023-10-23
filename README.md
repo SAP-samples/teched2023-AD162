@@ -45,10 +45,10 @@ This session will focus on building a mobile application using a SAP Cloud Appli
 ## Exercises
 | Exercise Number | Title | Estimated Time (mins) |
 | ---- | ---- | --- |
-| [Exercise 1](ex1/README.md) | Run the Starting Application on Your Device | 10 |
-| [Exercise 2](ex2/README.md) | Enhance the generated Incidents List and Detail page | 20 |
-| [Exercise 3](ex3/README.md) | Modify an Incident Record | 35 |
-| [Exercise 4](ex4/README.md) | Integrate with SAP Mobile Start | 25 |
+| [Exercise 1](./exercises/ex1/README.md) | Run the Starting Application on Your Device | 10 |
+| [Exercise 2](./exercises/ex2/README.md) | Enhance the generated Incidents List and Detail page | 20 |
+| [Exercise 3](./exercises/ex3/README.md) | Modify an Incident Record | 35 |
+| [Exercise 4](./exercises/ex4/README.md) | Integrate with SAP Mobile Start | 25 |
 
 
 ## How to obtain support

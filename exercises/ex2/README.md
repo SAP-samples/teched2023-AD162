@@ -139,7 +139,7 @@ A Profile header UI control furnishes additional information and enhances access
 
     ![MDK](images/2.3.10.gif) 
 
-12. Add two more activity items in a similar manner for Email and Phone, and bind them to the customer's Email and Phone properties.
+12. Add two more activity items in a similar manner for Email and Message, and bind them to the customer's Email and Phone properties.
 
     ![MDK](images/2.3.11.png) 
 

@@ -15,10 +15,10 @@ This hands-on exercise will assist you in learning how to **build mobile applica
 Accelerate development by using **SAP Build Code** to consume a SAP Cloud Application Programming (CAP) Model service for mobile development. Build a native, cross-platform mobile application using mobile development kit and bring all of your work together on the SAP Mobile Start app - the launchpad for mobile apps from SAP.
 
 ## Requirements
-In order to complete the session exercises below, first complete the [pre-requisites](ex0/README.md).
+In order to complete the session exercises below, first complete the [pre-requisites](./exercises/ex0/README.md).
 
 ## Use Case
-ACME is a popular electronics company. ACME hires call center support representatives to process and manage customer incidents. A call center support representative (Processor) receives a phone call from an existing customer and creates a new incident on behalf of the customer. ACME employs technicians who use mobile apps to view process these incidents.
+ACME is a popular electronics company. ACME hires call center support representatives to process and manage customer incidents. A call center support representative (Processor) receives a phone call from an existing customer and creates a new incident on behalf of the customer. ACME employs technicians who use mobile apps to process these incidents.
 
 ### Incident Creation ([AD161](https://github.com/SAP-samples/teched2023-AD161))
 - Mary reports an issue she is facing with her ACME electronic device.
@@ -40,15 +40,15 @@ The back-end for this Hands-On session (AD162) has been created using SAP Cloud 
   
 ![LCAP View of the Back-End](./assets/images/img-2.png)
 
-This session will focus on building a mobile application using a SAP Cloud Application Programming back-end. To learn more about how to build a back-end using SAP Cloud Application Programming Model, please check out the session AD161.
+This session will focus on building a mobile application using a SAP Cloud Application Programming back-end. To learn more about how to build a back-end using SAP Cloud Application Programming Model, please check out the [session AD161](https://github.com/SAP-samples/teched2023-AD161).
 
 ## Exercises
 | Exercise Number | Title | Estimated Time (mins) |
 | ---- | ---- | --- |
-| [Exercise 1](ex1/README.md) | Run the Starting Application on Your Device | 10 |
-| [Exercise 2](ex2/README.md) | Enhance the generated Incidents List and Detail page | 20 |
-| [Exercise 3](ex3/README.md) | Modify an Incident Record | 35 |
-| [Exercise 4](ex4/README.md) | Integrate with SAP Mobile Start | 25 |
+| [Exercise 1](./exercises/ex1/README.md) | Run the Starting Application on Your Device | 10 |
+| [Exercise 2](./exercises/ex2/README.md) | Enhance the generated Incidents List and Detail page | 20 |
+| [Exercise 3](./exercises/ex3/README.md) | Modify an Incident Record | 40 |
+| [Exercise 4](./exercises/ex4/README.md) | Integrate with SAP Mobile Start | 10 |
 
 
 ## How to obtain support

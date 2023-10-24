@@ -1,15 +1,23 @@
 # Exercise 2 - Enhance the generated Incidents List and Detail page
 
-In this exercise, you'll make few enhancements to the generated Incidents list. First, you'll display the customer's name. Then, you'll add a Filter feedback bar that will appear above the Incident List to filter incidents based on certain criteria.
+## Estimated time
 
-Next, you'll make enhancements to the Incident detail page. Here, you'll replace the existing Object Header with a Profile Header. This enhancement will provide additional information and improved access to multiple communication methods with a customer.
+:clock4: 20 minutes
 
-- [Exercise 2.1 - Display Customer Name and add a Filter Feedback Bar on the Incident List page](#exercise-21---display-customer-name-and-add-a-filter-feedback-bar-on-the-incident-list-page)
-- [Exercise 2.2 -  Add a Filter Feedback Bar on the Incident List page](#exercise-22---add-a-filter-feedback-bar-on-the-incident-list-page)
-- [Exercise 2.3 - Replace the existing Object Header with Profile Header UI control](#exercise-23---replace-the-existing-object-header-with-profile-header-ui-control)
-- [Exercise 2.4 - Redeploy the application](#exercise-24---redeploy-the-application)
-- [Exercise 2.5 - Update the MDK app with new metadata](#exercise-25---update-the-mdk-app-with-new-metadata)
-- [Summary](#summary)
+## Objective
+
+In this exercise, you'll make a few enhancements to the generated Incidents list. 
+- First, you'll display the customer's name. 
+- Then, you'll add a Filter feedback bar that will appear above the Incident List to filter incidents based on certain criteria. 
+- Next, you'll make enhancements to the Incident detail page. Here, you'll replace the existing Object Header with a Profile Header. This enhancement will provide additional information and improved access to multiple communication methods with a customer.
+
+| Exercise Number | Title |
+|---|---|
+| Exercise 2.1 | Display Customer Name and add a Filter Feedback Bar on the Incident List page |
+| Exercise 2.2 | Add a Filter Feedback Bar on the Incident List page |
+| Exercise 2.3 | Replace the existing Object Header with Profile Header UI control |
+| Exercise 2.4 | Redeploy the application |
+| Exercise 2.5 | Update the MDK app with new metadata |
 
 ### Exercise 2.1 - Display Customer Name and add a Filter Feedback Bar on the Incident List page
 
@@ -17,20 +25,22 @@ As a technician, you may want to see who reported an incident without navigating
 
 1. The Incident entity has a `customer` navigation property defined in the OData service definition that allows accessing customer information. 
 
-    To find the service definition, navigate to `Services` | `.IncidentManagement.xml` in your MDK metadata project. You will use this `customer` navigation property to access a customer's details.
+    To find the service definition, navigate to `Services` &rarr; `.IncidentManagement.xml` in your MDK metadata project. You will use this `customer` navigation property to access a customer's details.
    
     ![MDK](images/2.1.1.png)
 
-2. The `customer` navigation property has already been defined in the Incidents list page. This information can be found by navigating to `Pages` | `Incident` | `Incident_List.page`. Select the Object Table control to find the  `QueryOptions` property binding.
+2. The `customer` navigation property has already been defined in the Incidents list page. This information can be found by navigating to `Pages` &rarr; `Incident` &rarr; `Incident_List.page`. Select the Object Table control to find the  `QueryOptions` property binding.
 
     ![MDK](images/2.1.2.png)
 
 3. Scroll down through the Object Table properties, then click on the link icon next to the **Footnote** property to open the Object browser.
-    * Manually type `Reported by` in the Expression field, followed by a space.
-    * In the search field, look for the customer's first name, select `FirstName` and click on `Insert`. The expression box will generate the binding `Reported by {customer/FirstName}` **Don't close the Object Browser window**.
-    * Add a space after the generated value.
-    * Look for the customer's last name in the search field, select `LastName` and click  `Insert`. The expression box will generate the binding `Reported by {customer/FirstName} {customer/LastName}`. 
-    * Click **OK** to set this value in the control field.
+    - Manually type `Reported by` in the Expression field, followed by a space.
+    - In the search field, look for the customer's first name, select `FirstName` and click on `Insert`. The expression box will generate the binding `Reported by {customer/FirstName}` **Don't close the Object Browser window**.
+        > Ensure that `OData Objects` is selected in the dropdown menu.
+    - Add a space after the generated value.
+    - Look for the customer's last name in the search field, select `LastName` and click  `Insert`. 
+        > The expression box will generate the binding `Reported by {customer/FirstName} {customer/LastName}`. 
+    - Click **OK** to set this value in the control field.
 
     ![MDK](images/2.1.3.gif)
 
@@ -78,13 +88,13 @@ A Filter feedback bar is a horizontal bar that appears above a content list (on 
 
 A Profile header UI control furnishes additional information and enhances access to various communication methods with a customer.
 
-1. Navigate to `Pages` | `Incident` | `Incident_Detail.page`. Update the page's `DesignTimeTarget`'s `QueryOptions` to access  Customer information at design time. Click on the three-dot icons to open the Object Browser for the `QueryOptions` property.
+1. Navigate to `Pages` &rarr; `Incident` &rarr; `Incident_Detail.page`. Update the page's `DesignTimeTarget`'s `QueryOptions` to access  Customer information at design time. Click on the three-dot icons to open the Object Browser for the `QueryOptions` property.
 
     ![MDK](images/2.3.1.png) 
 
     >The `DesignTimeTarget` property is similar to Target, but is only used for design time.  
 
-2. Select the `customer` expand property, you'll notice that the expression value updates accrodingly. Click **OK** to close the Query Options Expression Editor. You can now access and bind customer information to any control on the detail page.
+2. Select the `customer` expand property, you'll notice that the expression value updates accordingly. Click **OK** to close the Query Options Expression Editor. You can now access and bind customer information to any control on the detail page.
 
     ![MDK](images/2.3.2.png) 
 
@@ -96,7 +106,7 @@ A Profile header UI control furnishes additional information and enhances access
 
     ![MDK](images/2.3.4.png) 
 
-5. Now, you will add the **Profile Header** control to display information such as name, location and communication methods with a customer. <br/> In the Layout Editor, expand the **Controls** | **Static Container** group, then drag and drop the **Profile Header** control onto the page area.
+5. Now, you will add the **Profile Header** control to display information such as name, location, and communication methods with a customer. <br/> In the Layout Editor, expand the **Controls** &rarr; **Static Container** group, then drag and drop the **Profile Header** control onto the page area.
 
     ![MDK](images/2.3.5.gif) 
 
@@ -106,13 +116,14 @@ A Profile header UI control furnishes additional information and enhances access
 
     ![MDK](images/2.3.6.gif) 
 
-
 8. For the `Headline` property, click on the link icon to open the Object Browser and bind to Customer's First and Last names.
 
-    * In the search field, look for `first`, select `FirstName` and **double-click on it**. The binding `{customer/FirstName}` will be generated in the expression box. **Do not close the Object Browser window**.
-    * Add a space after the generated value.
-    * Look for `last` in the search field, select `LastName` and **click on `Insert`**. You'll notice the binding `{customer/FirstName} {customer/LastName}` generated in the expression box. 
-    * Click **OK** to set the value to the control field.
+     > Ensure that `OData Objects` is selected in the dropdown menu.
+
+    - In the search field, look for `first`, select `FirstName` and **double-click on it**. The binding `{customer/FirstName}` will be generated in the expression box. **Do not close the Object Browser window**.
+    - Add a space after the generated value.
+    - Look for `last` in the search field, select `LastName` and **click on `Insert`**. You'll notice the binding `{customer/FirstName} {customer/LastName}` generated in the expression box. 
+    - Click **OK** to set the value to the control field.
 
     ![MDK](images/2.3.7.gif) 
 
@@ -128,7 +139,7 @@ A Profile header UI control furnishes additional information and enhances access
 
     ![MDK](images/2.3.10.gif) 
 
-12. Add two more activity items in a similar manner for Email and Phone, and bind them to the customer's Email and Phone properties.
+12. Add two more activity items in a similar manner for Email and Message, and bind them to the customer's Email and Phone properties.
 
     ![MDK](images/2.3.11.png) 
 
@@ -138,9 +149,9 @@ A Profile header UI control furnishes additional information and enhances access
 
     ![MDK](images/2.4.1.png)
 
-    >If you are prompted to login to Cloud Foundry, please follow the steps outlined [here](../ex1/README.md#exercise-13---display-the-qr-code-for-onboarding-the-mobile-app)
+    >If you are prompted to log in to Cloud Foundry, please follow the steps outlined [here](../ex1/README.md#exercise-13---display-the-qr-code-for-onboarding-the-mobile-app)
 
-8. Next, select the deploy target as **Mobile Services**.
+2. Next, select the deploy target as **Mobile Services**.
 
     ![MDK](images/2.4.2.png)
 

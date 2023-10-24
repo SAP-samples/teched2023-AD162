@@ -72,7 +72,7 @@ The SAP Mobile Start app is your native entry point to SAP’s mobile universe. 
    | --- | --- |
    | ![iOS](images/5_scan_ios.png) | ![Android](images/5_scan_and.jpeg) |
 
-11. You will be asked to login with your provided credentials. Use the email address in the format `ad162-###@education.cloud.sap` (replacing `##` with your number) and the password.
+11. You will be asked to login with your provided credentials. Use the email address in the format `ad162-###@education.cloud.sap` (replacing `###` with your 3-digit number) and the password.
 
 12. Tap on the **Apps** tab at the bottom tab bar. You can see the app integrating our mobile app built in this course under the section **AD162 Apps**
 

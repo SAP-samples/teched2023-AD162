@@ -10,12 +10,12 @@ In this exercise, you will run a starting SAP Mobile Development Kit (MDK) appli
 
 | Exercise Number | Title |
 | --- | --- |
-| [Exercise 1.1](#exercise-11---launch-the-sap-business-application-studio-for-mdk-development-asd) | Launch the SAP Business Application Studio for MDK Development asd |
+| [Exercise 1.1](#exercise-11---launch-the-sap-business-application-studio-for-mdk-development) | Launch the SAP Business Application Studio for MDK Development |
 | [Exercise 1.2](#exercise-12---change-the-workspace-to-the-project-explorer) | Change the workspace to the Project Explorer |
 | [Exercise 1.3](#exercise-13---display-the-qr-code-for-onboarding-the-mobile-app) | Display the QR code for onboarding the Mobile app |
 | [Exercise 1.4](#exercise-14---run-the-app) | Run the app |
 
-### Exercise 1.1 - Launch the SAP Business Application Studio for MDK Development asd 
+### Exercise 1.1 - Launch the SAP Business Application Studio for MDK Development 
 
 1. Launch the [SAP Business Application Studio](https://ad162-egls99xc.eu10cf.applicationstudio.cloud.sap/index.html) in the Google Chrome browser.
 

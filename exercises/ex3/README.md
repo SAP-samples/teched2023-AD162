@@ -21,18 +21,19 @@ Incidents are assigned to a Technician by a call center support representative. 
 | [Exercise 3.1](#exercise-31---create-a-new-page-for-modifying-incident-information)      | Create a new page for modifying Incident Information  |
 | [Exercise 3.2](#exercise-32---add-a-cancel-button-on-the-update-incident-detail-page)      | Add a Cancel Button on the Update incident Detail page|
 | [Exercise 3.3](#exercise-33---store-the-updated-data-locally)      | Store the updated data locally                        |
-| [Exercise 3.4](#exercise-34---navigate-to-the-incident-edit-page)      | Navigate to the Incident Edit page                     |
-| [Exercise 3.5](#exercise-35---redeploy-the-application)      | Redeploy the application                               |
-| [Exercise 3.6](#exercise-36---update-the-mdk-app-with-new-metadata)      | Update the MDK app with new metadata                   |
+| [Exercise 3.4](#exercise-34---validate-inputs-before-saving-incident-entity)      | Validate Inputs before saving Incident Entity   
+| [Exercise 3.5](#exercise-35---navigate-to-the-incident-edit-page)      | Navigate to the Incident Edit page                     |
+| [Exercise 3.6](#exercise-36---redeploy-the-application)      | Redeploy the application                               |
+| [Exercise 3.7](#exercise-37---update-the-mdk-app-with-new-metadata)      | Update the MDK app with new metadata                   |
 
 
 ### Exercise 3.1 - Create a new page for modifying Incident Information
 
-Both online and offline applications can be modified by users. Online application changes are saved to the backend immediately, while offline ones are stored locally until they are synced with an Upload action.
+Both online and offline applications can be modified by users. Online application changes are saved to the backend immediately, while offline applications store the changes locally until they are synced the the backend using an Upload action.
 
 In this step, you'll create a Section page with a Form Cell section for the Form Cell controls. This page will display a subset of items from the Incident Detail page, specifically the fields editable by the technician.
 
-1. Navigate to **Pages** &rarr; Right-click the **Incident** folder &rarr; **MDK: New Page**.
+1. Navigate to **Pages** &rarr; Right-click the **Incident** folder &rarr; select **MDK: New Page**.
 
     ![MDK](images/3.1.1.png)
 
@@ -64,7 +65,7 @@ In this step, you'll create a Section page with a Form Cell section for the Form
 
     >The Form Cell section is used to contain Form Cell controls on a section page.
 
-7. You will now add Form Cell controls to the Form Cell section. Expand the **Form Cell Controls** group, drag and drop a **List Picker** onto the Page area.
+7. You will now add Form Cell controls to the Form Cell section. Expand the **Form Cell Controls** group, drag and drop a **List Picker** onto the Form Cell section in the page area.
 
     ![MDK](images/3.1.7.gif)
 
@@ -76,91 +77,65 @@ In this step, you'll create a Section page with a Form Cell section for the Form
     | `Caption` | `Status` |
     | `AllowEmptySelection` | Choose `false` from the dropdown |
     | `IsPickerDismissedOnSelection`  | Choose `true` from the dropdown |
-    | `AllowDefaultValueIfOneItem` | Choose `true` from the dropdown |
 
     ![MDK](images/3.1.8.png)
 
     >- `AllowEmptySelection:` This disables or enables the selection of empty value set.
     >- `IsPickerDismissedOnSelection:` This enables automatic dismissal of the list view after an entry is selected.
-    >- `AllowDefaultValueIfOneItem:` This enables automatic selection of the default value for the List Picker if only one item is available. It's applicable when a technician updates the status of an incident from `In Process` to `Closed`.
 
 9. When a technician is updating the status of an incident, they should be presented with specific options depending on the current status of the incident.
-   - If the current status is `New`, the technician should see the options `In Process` and `Closed`.
-   - However, if the current status is `In Process`, the technician should only see the `Closed` option. This behavior should be built into your application's programming logic.
-   - In **Properties** pane, for the `PickerItems` property, choose **Rule**. Click on the three-dot icons and select **Create a Rule**.
+   - If the current status is `New` or `In Process`, the technician should see the options `In Process` and `Closed`.
+   - In **Properties** pane, for the `PickerItems` property, provide the values as `In Process` and `Closed` for `item0` and `item1` respectively. Click the `item2` and then click the trash icon to delete it.
 
-    ![MDK](images/3.1.9.gif)
+    ![MDK](images/3.1.9.png)
 
-10. Choose `/MDKApp/Rules/Incident` path for  *Folders* and click **OK**. This keeps all related files in a related folder.
+10. When updating an incident, the current status will be visible on the list picker.
+    - If the current status is `New`, This is because it wouldn't make sense for them to update the status to `New` again; instead, they would likely choose either `In Process` or `Closed`.
+    - If the current status is `In Process`, the technician has two options:
+        - They can leave the default value as `In Process`, update the device ID, and continue working on the assigned incident.
+        - They can change the status to `Closed` and provide all the necessary information to close the incident.
+    - Click on the link icon to open the Object Browser for the **Value** property. Select **OData Objects** in the dropdown menu.  In the search field, look for status, select `Status` and double-click on it. Click **OK**.
 
-    ![MDK](images/3.1.10.png)
+    ![MDK](images/3.1.10.gif)
 
-11. In the **Base Information** step, enter the Rule **Name** as `StatusPicker` and then click **Finish**.
 
-    ![MDK](images/3.1.11.png)
-
-12. Replace the generated snippet with the following code.
-
-    ```JavaScript
-    /**
-    * Describe this function...
-    * @param {IClientAPI} clientAPI
-    */
-    export default function StatusPicker(clientAPI) {
-        //get the current status of an incident
-        let currentStatus = clientAPI.binding.Status;
-        if (currentStatus == "New") {
-            return [{
-                "DisplayValue": "In Process",
-                "ReturnValue": "In Process"
-            }, {
-                "DisplayValue": "Closed",
-                "ReturnValue": "Closed"
-            }];
-        } else {
-            return [{
-                "DisplayValue": "Closed",
-                "ReturnValue": "Closed"
-            }];
-        }
-    }
-    ```
-
-13. Drag and drop a **Simple Property** Form cell control onto the `Incident_Edit.page` area. This allows a technician to manually input or scan the ID of the defective device.
+11. Below the list picker control on the Form Cell section of the `Incident_Edit.page` area, drag and drop a **Simple Property** Form cell control. This allows a technician to manually input or scan the ID of the defective device.
 
     ![MDK](images/3.1.13.gif)
 
-14. Provide the following information:
+12. Provide the following information:
 
     | Property | Value |
     |----|----|
     | `Name`| `FCDeviceID` |
     | `Caption` | `Device ID` |
     | `AlternateInput` | Choose `Barcode` from the dropdown |
+     `Value` | Click on the link icon to open the Object Browser and bind it to the `Device ID` |
     | `PlaceHolder`  | `Type in the device's ID or scan its barcode` |
 
     ![MDK](images/3.1.14.png)
 
-15. Drag and drop an **Attachment** Form Cell control onto the `Incident_Edit.page` area. This allows a technician to upload an image of the device they have repaired.  
+13. Below the simple property control on the Form Cell section of the `Incident_Edit.page` area, drag and drop an **Attachment** Form Cell control. This allows a technician to upload an image of the device they have repaired.  
 
     ![MDK](images/3.1.15.gif)
 
-16. Provide the following information:          
+14. Provide the following information:          
 
     | Property | Value |
     |----|----|
     | `Name` | `FCDeviceImage` |
+    | `IsVisible` | `false` |
     | `AttachmentActionType` | Unselect `SelectFile` option |
-    | `AttachmentAddTitle` | `Browse` |
+    | `AttachmentAddTitle` | `Add` |
     | `AttachmentTitle` | `Device Image` | 
 
     ![MDK](images/3.1.16.png)
 
-17. Now, drag and drop an **Inline Signature Capture** Form Cell control onto the `Incident_Edit.page` area. This enables a technician to collect a digital signature from the customer to confirm that the issue has been resolved.
+15. Below the attachment control on the Form Cell section of the `Incident_Edit.page` area, drag and drop an **Inline Signature Capture** Form Cell control. This enables a technician to collect a digital signature from the customer to confirm that the issue has been resolved.
 
     ![MDK](images/3.1.17.gif)
 
-18. Provide the following information:          
+16. Provide the following information:          
 
     | Property | Value |
     |----|----|
@@ -169,6 +144,7 @@ In this step, you'll create a Section page with a Form Cell section for the Form
     | `ShowTimestampInImage` | Choose `true` option from the dropdown |
     | `TimestampFormatter` | `YYYY-MM-dd 'at' HH:mm:ss` |
     | `WatermarkText` | `Signed by {customer/FirstName} {customer/LastName}` | 
+    | `IsVisible` | `false` |
 
     ![MDK](images/3.1.18.png)
 
@@ -176,21 +152,21 @@ In this step, you'll create a Section page with a Form Cell section for the Form
     >- `TimestampFormatter:` Set a DateTime format pattern string for the timestamp on the captured signature image.
     >- `WatermarkText:` The watermark text will be displayed in the captured signature image.
 
-19. If the `In Process` option is chosen from the Status list picker during an Incident modification, the options for uploading a Device Image and capturing customer signature should be hidden. However, if the `Closed` status is selected, the technician should be provided with options to upload an image of the device and collect the customer's signature. This logic needs to be programmatically handled within the application.
+17. If the `In Process` option is chosen from the Status list picker during an Incident modification, the options for uploading a Device Image and capturing customer signature should be hidden. However, if the `Closed` status is selected, the technician should be provided with options to upload an image of the device and collect the customer's signature. This logic needs to be added to the `Incident_Edit.page` in the application.
 
     Select `Status` List picker control, navigate to the **Event** tab, Click on **Create a rule/action** for `OnValueChange` event.
 
     ![MDK](images/3.1.20.png)
 
-20. Next, select **Object Type** as **Rule** and **Folders** as `/MDKApp/Rules/Incident`. Click **OK**.  
+18. Next, select **Object Type** as **Rule** and **Folders** as `/MDKApp/Rules/Incident`. Click **OK**. This keeps all related files organized together.
 
     ![MDK](images/3.1.10.png)
 
-21. Provide the name `StatusChangeProtocol` to your rule, Click **Finish**.
+19. Provide the name `StatusChangeProtocol` to your rule, click **Finish**.
 
     ![MDK](images/3.1.21.png)
 
-22. Replace the generated snippet with the following code.
+20. Replace the generated snippet with the following code.
 
     ```JavaScript
     /**
@@ -198,13 +174,14 @@ In this step, you'll create a Section page with a Form Cell section for the Form
     * @param {IClientAPI} clientAPI
     */
     export default function StatusChangeProtocol(clientAPI) {
-        //Get the control based on the name
+        //Get the Sectioned Table based on the name
         const sectionedTable = clientAPI.getPageProxy().getControl('SectionedTable0');
         //Get the section based on the name
         const fcsection = sectionedTable.getSection('SectionFormCell0');
+        //Get the control based on the name
         const fcAttachment = fcsection.getControl('FCDeviceImage');
         const fcSignatureCapture = fcsection.getControl('FCCustomerSignature');
-        const selectedValue = fcsection.getControl('FCStatus').getValue()[0].ReturnValue;
+        const selectedValue = clientAPI.getValue()[0].ReturnValue;
         if (selectedValue == "In Process") {
             fcAttachment.setVisible(false);
             fcSignatureCapture.setVisible(false);
@@ -217,7 +194,7 @@ In this step, you'll create a Section page with a Form Cell section for the Form
 
 ### Exercise 3.2 - Add a Cancel Button on the Update incident Detail page
 
-While updating the incident details, you may want to close the current page and cancel or interrupt any ongoing process.
+While updating the incident details, you want to give the user an option to close the edit page and not save any values entered.
 
 1. In the `Incident_Edit.page`, drag and drop an **Action Bar Item** control to the upper left corner of the action bar.
 
@@ -225,11 +202,16 @@ While updating the incident details, you may want to close the current page and 
 
     >The Action Bar Item is a button that users can use to trigger actions when pressed. You can add an Action Bar Item only to the Action Bar at the top of the page.
 
-2. In the Properties pane, click the **link icon** to open the object browser for the **System Item** property. Double-click the **Cancel** type and click **OK**.
+2. In the Properties pane, provide the following information:        
+
+    | Property | Value |
+    |----|----|
+    | `Caption` | `Cancel` |
+    | `SystemItem` | Click the **link icon** to open the Object Browser, double-click the **Cancel** type and click **OK**. |
 
     ![MDK](images/3.2.2.png)
 
-    >System Items are predefined system-supplied icons or text and can overwrite `Caption` and `Icon` properties if specified.
+    >System Items are predefined system-supplied icons.
 
 3. Navigate to the **Events** tab. Click the three-dot icon, then click the **Object Browser** and bind it to `CloseModalPage_Cancel.action`. This enables you to close pages with the option to either terminate ongoing events or wait until they are complete.
 
@@ -244,18 +226,23 @@ You can find details of the service definition in your MDK metadata project `/Se
     
 ![MDK](images/3.3.1.png)
 
-To update the `Status` and `DeviceID` properties of Incident entity, the OData Update Entity action is used. <br/> However, when dealing with the `DeviceImage` and `ResolutionSignatureImage` properties of the Incident entity, which are of type Edm.Stream, the OData UploadStream action is used. These properties likely store binary data, such as images or files. 
+To update the `Status` and `DeviceID` properties of the Incident entity, the OData Update Entity action is used. <br/> However, when dealing with the `DeviceImage` and `ResolutionSignatureImage` properties of the Incident entity, which are of type Edm.Stream, the OData UploadStream action is used. Stream properties are used to store binary data, such as images or files. 
 
 - You will now add an Action Bar item on the `Incident_Edit.page`. This item will trigger an OData Update Entity action to save the Status and Device ID.
-- Upon successful completion of the OData Update Entity action, an OData Upload Stream action should be initiated to save the Device Image and Customer Signature.
-- Consider closing the page once the update action is executed successfully.
-- A failure message should be displayed if either action fails to store the changes.
+- Following the successful completion of the OData Update Entity action, you will initiate an OData Upload Stream action to save the Device Image and Customer Signature.
+- Once the update actions are executed successfully, close the Edit page.
+- A failure message should be displayed if either action fails to execute the changes.
 
 1. In the `Incident_Edit.page`, **drag and drop** an **Action Bar Item** to the upper right corner of the action bar.
 
     ![MDK](images/3.3.2.png)
 
-2. In the Properties pane, click the **link icon** to open the object browser for the **System Item** property. Double-click the **Save** type and click **OK**.
+2. In the Properties pane, provide the following information:        
+
+    | Property | Value |
+    |----|----|
+    | `Caption` | `Save` |
+    | `SystemItem` | Click the **link icon** to open the Object Browser, double-click the **Save** type and click **OK**. |
 
     ![MDK](images/3.3.3.png)
 
@@ -263,15 +250,15 @@ To update the `Status` and `DeviceID` properties of Incident entity, the OData U
 
     ![MDK](images/3.3.4.png)
 
-4. Set the selection for the `Object Type` as **Action** and `Folders` path as `/MDKApp/Actions/Incident`.
+4. Set the selection for the `Object Type` as **Action** and `Folders` path as `/MDKApp/Actions/Incident`. This keeps all related files organized together.
 
     ![MDK](images/3.3.5.png)   
 
-5. Choose **Data** in **Category** | click **OData** | **Next**.
+5. In the search **Category** dropdown, choose **Data** | click **OData** | click **Next**.
 
     ![MDK](images/3.3.6.png)   
 
-6. In the **Base Information** step, provide the following information:
+6. In the **Base Information** step, provide the following information and click **Next**.
 
     | Property | Value |
     |----|----|
@@ -279,67 +266,64 @@ To update the `Status` and `DeviceID` properties of Incident entity, the OData U
     | `Type` | Select `UpdateEntity` from the dropdown |
     | `Service`| Select `IncidentManagement.service` from the dropdown |
     | `EntitySet`| Select `Incident` from the dropdown |
-    | `ReadLink`| click link icon and double-click `readLink` |
+    | `ReadLink`| Click link icon to open the Object Browser and double-click `readLink` |
 
     ![MDK](images/3.3.7.png)  
 
     >The `readLink` is a direct reference to an individual entity set entry.
 
-7. Click **Next**.
+7.  In **Property and Update Links** step, uncheck **ID**.
 
-8.  In **Property and Update Links** step, uncheck **ID**.
-
-9.  You will bind `Status` and `DeviceID` OData properties to respective UI Controls. 
-    - Select the `Status` property and click the **link icon** to open the object browser. 
-    - In the object browser, change the dropdown  to `Controls & ClientData`, and select the  **Current Page** radio button.
+8.  You will bind `Status` and `DeviceID` OData properties to respective UI Controls. 
+    - Select the `Status` property and click the **link icon** to open the Object Browser. 
+    - In the Object Browser, change the dropdown  to `Controls & ClientData`, and select the  **Current Page** radio button.
     - In the search box, start typing `status`. The list will filter to display the matching values. Double-click the **SelectedValue (Value)** entry under the `FCStatus` field and click **OK** to set binding.
 
     ![MDK](images/3.3.8.gif)  
 
     >`SelectedValue` provides the return value of List Picker selection.
 
-10. Repeat the above step for DeviceID.
-    - Select the `DeviceID` property and click the **link icon** to open the object browser. 
-    - Change the drop-down in the object browser to `Controls & ClientData`, click the **Current Page** radio button.
+9. Repeat the above step for DeviceID.
+    - Select the `DeviceID` property and click the **link icon** to open the Object Browser. 
+    - Change the drop-down in the Object Browser to `Controls & ClientData`, click the **Current Page** radio button.
     - In the search box, start typing `device`. The list will filter down to show the matching values. Double-click the **Value (Value)** entry under the `FCDeviceID` field and click **OK** to set binding.
 
     ![MDK](images/3.3.9.gif) 
 
-11. Click Finish. The action editor will open with the `Incident_UpdateEntity.action` loaded.
+10. Click Finish. The action editor will open with the `Incident_UpdateEntity.action` loaded.
 
-12. When this `Incident_UpdateEntity.action` fails due to some reason, you may want to display an error. In the `Incident_UpdateEntity.action`, scroll down and expand the **Common Action Properties** section. Click on the link icon for `Failure Action` property to open the object browser and bind to an existing message action `GenericMessageBox.action`.
+11. When this `Incident_UpdateEntity.action` fails due to some reason, you may want to display an error. In the `Incident_UpdateEntity.action`, scroll down and expand the **Common Action Properties** section. Click on the link icon for `Failure Action` property to open the Object Browser and bind to an existing message action `GenericMessageBox.action`.
 
     ![MDK](images/3.3.10.png) 
 
-13. Let's override this action's properties and define some specific information about `Incident_UpdateEntity.action`. Click on the override icon to open the override action properties wizard. 
+12. Let's override this action's properties and define some specific information about `Incident_UpdateEntity.action`. Click on the override icon to open the override action properties wizard. 
 
     ![MDK](images/3.3.11.png) 
 
-14. Provide the following information and then click **OK**.
+13. Provide the following information and then click **OK**.
 
     | Property | Value |
     |----|----|
     | `Message` | `Update entity failure - {#ActionResults:Incident_UpdateEntity/error}` |
     | `Title` | `Update Incident` |
-    | `OKCaption` | `OK` |
 
-![MDK](images/3.3.12.png) 
+    ![MDK](images/3.3.12.png) 
 
->`Incident_UpdateEntity` is the Action Result value of the Incident_UpdateEntity.action. This reference is used to pass the results to subsequent actions in the chain. These actions can reference the action result as needed. In this case if there is a failure, you access the error property of the action result to display the OData failure message. <br/> This is the standard Binding Target Path (also called Dynamic Target Path) syntax used when you need to include a binding with other bindings or within a string as used in the message here.<br/> You could exclude above expression and can just display a generic message.
+    >`Incident_UpdateEntity` is the Action Result value of the Incident_UpdateEntity.action. This reference is used to pass the results to subsequent actions in the chain. These actions can reference the action result as needed. In this case if there is a failure, you access the error property of the action result to display the OData failure message. <br/> This is the standard Binding Target Path (also called Dynamic Target Path) syntax used when you need to include a binding with other bindings or within a string as used in the message here.<br/> You could exclude above expression and can just display a generic message.
 
-15. Upon successful completion of the `Incident_UpdateEntity.action`, an OData Upload Stream action should be initiated to save the Device Image and Customer Signature. <br/> Click the `Create a rule/action` icon for the **Success Action**. 
+14. Upon successful completion of the `Incident_UpdateEntity.action`, an OData Upload Stream action should be initiated to save the Device Image and Customer Signature. <br/> Click the `Create a rule/action` icon for the **Success Action**. 
 
     ![MDK](images/3.3.13.png) 
 
-16. Select **Object Type** as **Action** and `Folders` as `/MDKApp/Actions/Incident`. Click **OK**.
+15. Select **Object Type** as **Action** and `Folders` as `/MDKApp/Actions/Incident`. Click **OK**.
 
     ![MDK](images/3.3.5.png)   
 
-17. Choose **Data** in **Category** | click **Media** | **Next**.
+16. In the search **Category** dropdown, choose **Data** | click **Media** | click **Next**. 
 
-    ![MDK](images/3.3.14.png)   
+    ![MDK](images/3.3.14.png)  
 
-18. In the **Base Information** step, provide the following information:
+17. In the **Base Information** step, provide the following information and click **Next**.
 
     | Property | Value |
     |----|----|
@@ -347,65 +331,145 @@ To update the `Status` and `DeviceID` properties of Incident entity, the OData U
     | `Type` | Select `UploadStream` from the dropdown |
     | `Service`| Select `IncidentManagement.service` from the dropdown |
     | `EntitySet`| Select `Incident` from the dropdown |
-    | `ReadLink`| click link icon and double-click `readLink` |
+    | `ReadLink`| Click link icon to open the Object Browser and double-click `readLink` |
 
     ![MDK](images/3.3.15.png) 
 
-19. Click **Next**.
-
-20.  In **Property and Update Links** step, select **DeviceImage** if not selected before.
-
-21. Select the `DeviceImage` property and click the **link icon** to open the object browser. 
-
-    -  Change the drop-down in the object browser to `Controls & ClientData`, select the **Current Page** radio button.
+18.  In **Property and Update Links** step, select the `DeviceImage` property and click the **link icon** to open the object browser.
+    -  Change the drop-down in the Object Browser to `Controls & ClientData`, select the **Current Page** radio button.
     - In the search box, start typing `image`. The list will filter to display the matching values. Double-click the **Value (Value)** entry under the `FCDeviceImage` field and click **OK** to set binding.
 
-    ![MDK](images/3.3.16.gif) 
+        ![MDK](images/3.3.16.gif) 
 
-22. Repeat the above step for the `ResolutionSignatureImage` property.
+20. Select the `ResolutionSignatureImage` property and click the **link icon** to open the object browser.
+    -  Change the drop-down in the Object Browser to `Controls & ClientData`, select the **Current Page** radio button.
+    - In the search box, start typing `signature`. The list will filter to display the matching values. Double-click the **Value (Value)** entry under the `FCCustomerSignature` field and click **OK** to set binding.
+    
+        ![MDK](images/3.3.17.png) 
 
-    ![MDK](images/3.3.17.png) 
+21. Click Finish. The action editor will open with the `Incident_UploadStream.action` loaded.
 
-23. Click Finish. The action editor will open with the `Incident_UploadStream.action` loaded.
-
-24. When the `Incident_UploadStream.action` is executed, you may want to display sucess message and close the page. When it fails due to some reason, you may want to display an error. <br/> In the `Incident_UploadStream.action`, scroll down and expand the **Common Action Properties** section. Click on the link icon for `Success Action` property to open the object browser and bind to an existing message action `GenericToastMessage.action`.
+22. When the `Incident_UploadStream.action` is executed, you may want to display sucess message and close the page. When it fails due to some reason, you may want to display an error. <br/> In the `Incident_UploadStream.action`, scroll down and expand the **Common Action Properties** section. Click on the link icon for `Success Action` property to open the Object Browser and bind to an existing message action `GenericToastMessage.action`.
 
     ![MDK](images/3.3.18.png) 
 
-25. Let's override this action's properties and define some specific information about handling `Incident_UploadStream.action`. Click on the override icon to open the override action properties wizard. 
+23. Let's override this action's properties and define some specific information about handling `Incident_UploadStream.action`. Click on the override icon to open the override action properties wizard. 
 
     ![MDK](images/3.3.19.png) 
 
-26. Provide the following information and then click **OK**.
+24. Provide the following information and then click **OK**.
 
     | Property | Value |
     |----|----|
     | `Message` | `Entity updated` |
     | `Duration` | `2` |
     | `Animated` | Select `true` from the dropdown option |
-    | `Common Action Properties` &rarr; `Succes Action` | Click on the link icon and bind it to `CloseModalPage_Complete.action` |
+    | `Common Action Properties` &rarr; `Success Action` | Click on the link icon and bind it to `CloseModalPage_Complete.action` |
 
     ![MDK](images/3.3.20.png) 
 
-27. When this `Incident_UploadStream.action` fails due to some reason, you may want to display an error. Click on the link icon for `Failure Action` property to open the object browser and bind to an existing message action `GenericMessageBox.action`.
+25. When this `Incident_UploadStream.action` fails due to some reason, you may want to display an error. Click on the link icon for `Failure Action` property to open the Object Browser and bind to an existing message action `GenericMessageBox.action`.
 
     ![MDK](images/3.3.21.png) 
 
-28. Let's override this action's properties and define some specific information when `Incident_UploadStream.action` fails. Click on the override icon to open the override action properties wizard. 
+26. Let's override this action's properties and define some specific information when `Incident_UploadStream.action` fails. Click on the override icon to open the override action properties wizard. 
 
     ![MDK](images/3.3.22.png) 
 
-29. Provide the following information and then click **OK**.
+27. Provide the following information and then click **OK**.
 
     | Property | Value |
     |----|----|
     | `Message` | `Upload Stream failure - {#ActionResults:Incident_UploadStream/error}` |
     | `Title` | `Upload Stream` |
-    | `OKCaption` | `OK` |
 
     ![MDK](images/3.3.23.png) 
 
-### Exercise 3.4 - Navigate to the Incident Edit page
+### Exercise 3.4 - Validate Inputs before saving Incident Entity
+
+Ensure the technician can only save an incident entity after providing all the required inputs. If they don't, show them an appropriate message. For instance, if they try to submit a record with an empty status, no Device ID, more than one device image, or without a customer signature, they should be prompted with a warning message.
+
+To achieve this, you'll need to implement a business logic that validates the input values and this logic needs to be bound to the `Save` ActionBar item on the `Incident_Edit.page`.
+
+1. In `Incident_Edit.page`, select the `Save` ActionBar item and navigate to the **Events** tab. Clear the existing binding for the `OnPress` property.
+
+    ![MDK](images/3.4.8.png) 
+
+2. Click the three-dot icon for the `OnPress` property, and select `Create a rule/action`.
+
+    ![MDK](images/3.4.9.png) 
+
+3. Select **Object Type** as **Rule** and **Folders** as `/MDKApp/Rules/Incident`. Click **OK**.  
+
+    ![MDK](images/3.1.10.png)
+
+
+5. Provide the name `Incident_ValidateEdit` to your rule, and then click **Finish**.
+
+    ![MDK](images/3.4.10.png)  
+
+6. Replace the generated snippet with the following code.
+
+    ```JavaScript
+    /**
+    * Describe this function...
+    * @param {IClientAPI} clientAPI
+    */
+    export default function Incident_ValidateEdit(clientAPI) {
+        var attachments = clientAPI.getPageProxy().getControl('SectionedTable0').getSection('SectionFormCell0').getControl('FCDeviceImage').getValue();
+        var statusPicker = clientAPI.getPageProxy().getControl('SectionedTable0').getSection('SectionFormCell0').getControl('FCStatus').getValue();
+        var currentStatus;
+        if (statusPicker.length > 0 && statusPicker[0].ReturnValue) {
+            currentStatus = statusPicker[0].ReturnValue;
+        }
+        var customerSignature = clientAPI.getPageProxy().getControl('SectionedTable0').getSection('SectionFormCell0').getControl('FCCustomerSignature').getValue();
+        var deviceID = clientAPI.getPageProxy().getControl('SectionedTable0').getSection('SectionFormCell0').getControl('FCDeviceID').getValue();
+        if (!currentStatus) {
+            return clientAPI.executeAction({
+                "Name": '/MDKApp/Actions/GenericMessageBox.action',
+                "Properties": {
+                    "Message": "Please select status",
+                    "Title": "Validation"
+                }
+            })
+        }
+        if (!deviceID) {
+            return clientAPI.executeAction({
+                "Name": '/MDKApp/Actions/GenericMessageBox.action',
+                "Properties": {
+                    "Message": "Device ID is required",
+                    "Title": "Validation"
+                }
+            })
+        }
+        if (currentStatus === "Closed" && attachments.length !== 1) {
+            return clientAPI.executeAction({
+                "Name": '/MDKApp/Actions/GenericMessageBox.action',
+                "Properties": {
+                    "Message": attachments.length < 1 ? "Please add 1 device image" : "Max. 1 image allowed for the device",
+                    "Title": "Validation"
+                }
+            })
+        }
+        if (currentStatus === "Closed" && !customerSignature) {
+            return clientAPI.executeAction({
+                "Name": '/MDKApp/Actions/GenericMessageBox.action',
+                "Properties": {
+                    "Message": "Customer Signature is required",
+                    "Title": "Validation"
+                }
+            })
+        }
+        return clientAPI.executeAction({
+            "Name": '/MDKApp/Actions/Incident/Incident_UpdateEntity.action',
+            "Properties": {
+                "OnSuccess": currentStatus === "Closed" ? "/MDKApp/Actions/Incident/Incident_UploadStream.action" : "/MDKApp/Actions/CloseModalPage_Complete.action"
+            }
+        })
+    }
+    ```
+
+### Exercise 3.5 - Navigate to the Incident Edit page
 
 To navigate from the Incident Detail page to a new page for modifying incident information, you'll add an action bar item on the Incident Details page and link it to a navigation action. When the action bar item is pressed by a technician, it will open the `Incident_Edit.page`.
 
@@ -413,11 +477,16 @@ To navigate from the Incident Detail page to a new page for modifying incident i
 
     ![MDK](images/3.4.1.png)    
 
-2. Click the **link icon** to open the object browser for the **System Item** property.<br/> Double-click the **Edit** type and click **OK**.
+2. In the Properties pane, provide the following information:        
+
+    | Property | Value |
+    |----|----|
+    | `Caption` | `Edit` |
+    | `SystemItem` | Click the **link icon** to open the Object Browser, double-click the **Edit** type and click **OK**. |
 
     ![MDK](images/3.4.2.png)    
 
-3. The Edit button should only be visible for incidents that are in the `New` or `In Process` state. If an incident's status is `Closed`, the technician should not have any options to change the details. This behavior should be integrated into your application's programming logic. <br/>  Click on `Create a rule` icon for the **Visible** property of Edit action bar item.
+3. The Edit button should only be visible for incidents that are in the `New` or `In Process` state. If an incident's status is `Closed`, the technician should not have any options to change the details. This behavior should be integrated into your application logic. <br/>  Click on `Create a rule` icon for the **Visible** property of Edit action bar item.
 
     ![MDK](images/3.4.3.png)   
 
@@ -457,65 +526,48 @@ To navigate from the Incident Detail page to a new page for modifying incident i
 
     ![MDK](images/3.3.5.png)   
 
-10. Choose **UI** in **Category** | click **Navigation** | **Next**.
+10. In the search **Category** dropdown, choose **UI** | click **Navigation** | click **Next**. 
 
     ![MDK](images/3.4.6.png)  
 
-11. Provide the following information:
+11. Provide the following information and click **Finish** to complete the action creation process.
 
     | Property | Value |
     |----|----|
-    | `Action Name`| `NavToIncident_Edit` |
+    | `Name`| `NavToIncident_Edit` |
     | `PageToOpen` | Select `Incident_Edit.page` from the dropdown |
     | `ModalPage`| Select `true` from the dropdown |
+    | `ModalPageFullScreen`| Select `false` from the dropdown |
 
     ![MDK](images/3.4.7.png)  
 
-12. Click **Finish** to complete the action creation process. 
+    >- `ModalPage:` This indicates if a page is modal.
+    >- `ModalPageFullScreen:` On a phone form factor the modal page will display as a full page modal screen. On a tablet form factor the partial modal will popup and not cover the entire page when setting its value to false
 
-### Exercise 3.5 - Redeploy the application
+### Exercise 3.6 - Redeploy the application
 
-1. Right-click the `Application.app` file in the project explorer pane, choose `MDK:Deploy` and then select deploy target as **Mobile Services**.
+Now that you have created the Edit page it is time to deploy the changes to see the result.
+
+1. Right-click the `Application.app` file in the project explorer pane, choose `MDK:Deploy` and then select deploy target as **Mobile Services**. When the deployment is successful, a success message will appear. If the deployment gets stuck, reload the page and try again.
 
     ![MDK](images/3.5.1.png)
     ![MDK](images/3.5.2.png)
 
     >Alternatively, you can select `MDK: Redeploy` from the command palette. To access the command palette, go to the View menu and choose Command Palette, or press Command+Shift+P on a Mac or Ctrl+Shift+P on a Windows machine. This command will perform the last deployment.
+    
     >![MDK](images/3.5.3.png)
 
-### Exercise 3.6 - Update the MDK app with new metadata
+       
 
-| Steps      | Android | iOS     |
-| :---        |    :----:   |          ---: |
-| 1. Tap the **Check for Updates** option in the `User menu` on the Incident page.      | ![MDK](images/3.6.1.png)       | ![MDK](images/3.6.2.png)   |
-| 2. You will see a `New Version Available!` pop-up. Tap **Now**.     | ![MDK](images/3.6.3.png)       | ![MDK](images/3.6.4.png)   |
-| 3. Navigate to an Incident detail page. <br/> If an incident's status is already `Closed`, you will not see the Edit option on its details. Instead, you will have the ability to open the working device's image. <br/>  If an incident's status is `New` or `In Process`, you will only see the Edit option. | ![MDK](images/3.6.5.gif)       | ![MDK](images/3.6.6.gif)   |
-| 4. Update an Incident. <br/> you can update the status from `new` to `In Process` or `Closed` or from `In Process` to `Closed`. <br/> When updating it to `In Process`, you should be able to enter the ID of the defective device, either by manually typing it or scanning the device's barcode, but you won't have options for uploading a device image or capturing the customer's signature. <br/> When updating it to `Closed`, you should be able to enter the ID of the defective device, either by manually typing it or scanning the device's barcode, and you should also see the options for uploading a device image and capturing customer's signature. <br/> To scan the device's barcode, you can use the below image. ![MDK](images/3.6.9.png) | ![MDK](images/3.6.7.gif)       | ![MDK](images/3.6.8.gif)   |
-| 5. Since this is an Offline application, the changes are saved to the local store, which needs to be sent or uploaded to the backend explicitly. <br/> Navigate to the Incident list page, pull down on the incident list to upload changes to the backend, OR click on the user menu icon and select **Sync Changes**. You will see a successful message.    | ![MDK](images/3.6.10.gif)       | ![MDK](images/3.6.11.gif)   |
+### Exercise 3.7 - Update the MDK app with new metadata
 
->Optionally, you can inform the technician about the maximum allowed number of images for the device. It's worth noting that more than one image can be added in the attachment control. However, in the case where more than one image is attached, the technician shouldn't be able to save the record. The technician should only be able to save the record when there is exactly one device image attached to an Incident entity. To achieve this, you'll need to implement programmatic logic that validates the attachment and binds it to the Save ActionBar item on the Incident edit page.<br/>
->
-```JavaScript
-/**
- * Describe this function...
- * @param {IClientAPI} clientAPI
- */
-export default function Incident_ValidateDeviceImageAttachment(clientAPI) {
-    var attachments = clientAPI.getPageProxy().getControl('SectionedTable0').getSection('SectionFormCell0').getControl('FCDeviceImage').getValue();
-    if (attachments.length !== 1) {
-        return clientAPI.executeAction({
-            "Name": '/MDKApp/Actions/GenericMessageBox.action',
-            "Properties": {
-                "Message": attachments.length < 1 ? "Please add 1 device image" : "Max. 1 image allowed for the device",
-                "Title": "Alert",
-                "OKCaption": "OK"
-            }
-        })
-    } else {
-        return clientAPI.executeAction('/MDKApp/Actions/Incident/Incident_UpdateEntity.action');
-    }
-}
-```
+| Steps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Android | iOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+|---|---|---|
+| 1. Tap the **Check for Updates** option in the `User menu` on the Incident page.| ![MDK](images/3.6.1.png)| ![MDK](images/3.6.2.png)|
+| 2. You will see a `New Version Available!` pop-up. Tap **Now**.| ![MDK](images/3.6.3.png)| ![MDK](images/3.6.4.png)|
+| 3. Navigate to an Incident detail page. <br/><br/> If an incident's status is already `Closed`, you will not see the **Edit** option in the action bar. Instead, you will have the ability to open the working device's image. <br/><br/>  If an incident's status is `New` or `In Process`, you will see the **Edit** option.| ![MDK](images/3.6.5.gif)| ![MDK](images/3.6.6.gif)|
+| 4. Update an Incident. <br/><br/> you can update the status from `New` to `In Process` or `Closed` or from `In Process` to `Closed`. <br/><br/> When updating it to `In Process`, you should be able to enter the ID of the defective device, either by manually typing it or scanning the device's barcode, but you won't have options for uploading a device image or capturing the customer's signature. <br/><br/> When updating it to `Closed`, you should be able to enter the ID of the defective device, either by manually typing it or scanning the device's barcode, and you should also see the options for uploading a device image and capturing customer's signature. <br/><br/> To scan the device's barcode, you can use the below image. <br/><br/><br/><br/> ![MDK](images/3.6.9.png) | ![MDK](images/3.6.7.gif)| ![MDK](images/3.6.8.gif)|
+| 5. Since this is an Offline application, the changes are saved to the local store, which needs to be sent or uploaded to the backend explicitly. <br/><br/> Navigate to the Incident list page, pull down on the incident list to upload changes to the backend, OR click on the user menu icon and select **Sync Changes**. You should see a `Sync Completed` message displayed. | ![MDK](images/3.6.10.gif) | ![MDK](images/3.6.11.gif)|
 
 ## Summary
 

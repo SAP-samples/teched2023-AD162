@@ -148,21 +148,15 @@ A Profile header UI control furnishes additional information and enhances access
 
 Now that you have completed the changes to the Incident List and Detail pages it is time to deploy the changes to see the result.
 
-1. Right-click the `Application.app` file in the project explorer pane and select `MDK:Deploy`.
+1. Right-click the `Application.app` file in the project explorer pane, choose `MDK:Deploy` and then select deploy target as **Mobile Services**. When the deployment is successful, a success message will appear. If the deployment gets stuck, reload the page and try again.
 
     ![MDK](images/2.4.1.png)
-
-    >If you are prompted to log in to Cloud Foundry, please follow the steps outlined [here](../ex1/README.md#exercise-13---display-the-qr-code-for-onboarding-the-mobile-app).
-
-2. Next, select the deploy target as **Mobile Services**.
-
     ![MDK](images/2.4.2.png)
 
-    When the deployment is successful, a success message will appear. If the deployment gets stuck, reload the page and try again.
+    >Alternatively, you can select `MDK: Redeploy` from the command palette. To access the command palette, go to the View menu and choose Command Palette, or press Command+Shift+P on a Mac or Ctrl+Shift+P on a Windows machine. This command will perform the last deployment.
+    
+    >![MDK](images/2.4.3.png)
 
-    ![MDK](images/2.4.3.png)
-
-    >Revision 1 was pre-deployed to your mobile services app.
 
 ### Exercise 2.5 - Update the MDK app with new metadata
 

@@ -12,8 +12,10 @@ In this exercise, you will run a starting SAP Mobile Development Kit (MDK) appli
 | --- | --- |
 | [Exercise 1.1](#exercise-11---launch-the-sap-business-application-studio-for-mdk-development) | Launch the SAP Business Application Studio for MDK Development |
 | [Exercise 1.2](#exercise-12---change-the-workspace-to-the-project-explorer) | Change the workspace to the Project Explorer |
-| [Exercise 1.3](#exercise-13---display-the-qr-code-for-onboarding-the-mobile-app) | Display the QR code for onboarding the Mobile app |
-| [Exercise 1.4](#exercise-14---run-the-app) | Run the app |
+| [Exercise 1.3](#exercise-13---provide-your-assigned-service-worker-id-to-filter-related-incidents) | Provide your assigned Service Worker ID to filter related Incidents |
+| [Exercise 1.4](#exercise-14---deploy-the-application) | Deploy the application |
+| [Exercise 1.5](#exercise-15---display-the-qr-code-for-onboarding-the-mobile-app) | Display the QR code for onboarding the Mobile app |
+| [Exercise 1.6](#exercise-16---run-the-app) | Run the app |
 
 ### Exercise 1.1 - Launch the SAP Business Application Studio for MDK Development 
 
@@ -45,13 +47,75 @@ You will now switch your workspace to the `projects` folder.
 
     ![MDK](images/1.2.2.png) 
 
-    The SAP Business Application Studio page will reload, and the projects folder will now open as the workspace. 
+    The SAP Business Application Studio page will reload, and the projects folder will now open as the workspace. You will find your `MDKApp` project. 
 
     ![MDK](images/1.2.3.png)      
 
-### Exercise 1.3 - Display the QR code for onboarding the Mobile app
+### Exercise 1.3 - Provide your assigned Service Worker ID to filter related Incidents
 
-We have imported a functional project into your dev space to help you get started. The same project has already been deployed to a mobile app configuration `sap.mobile.user.xxx` assigned to you on SAP Mobile Services landscape. 
+1. Expand the `MDKApp` project and navigate to `Pages` &rarr; `Incident`. Right-click on the `Incident_List.page` and open with **Text Editor**.
+
+    ![MDK](images/1.3.10.gif)   
+
+2. Replace the `workerID` with a Service Worker ID value shared with you and then close the page by clicking the `x` sign.
+
+    ![MDK](images/1.3.11.png)  
+
+### Exercise 1.4 - Deploy the application
+
+You will now deploy the application definitions to SAP Mobile Services.
+
+1. Right-click `Application.app` and select **MDK: Deploy**.
+
+    ![MDK](images/1.4.22.png) 
+
+2. If you don't have an active CF session, you may be prompted to log into Cloud Foundry. If prompted, click **Login** to continue. If not, proceed directly to step 8.
+
+    ![MDK](images/1.3.3.png)
+
+3. Choose the **SSO Passcode** as your authentication method, then click on the highlighted hyperlink. This will open a new browser page.
+
+    ![MDK](images/1.3.4.png)
+
+4. A new tab will open in your browser. Enter  `tdct3ched1-platform` as the origin key for the custom IdP, then click on **Sign in with alternative identity provider**.
+
+    ![MDK](images/1.3.5.png)
+
+    > Cancel the certificate selection if you are prompted to do so in the browser.
+
+5. Copy the Temporary Authentication Code.
+
+    ![MDK](images/1.3.6.png)
+
+6. Switch back to the SAP Business Application Studio page. Paste the copied code into the field labeled **Enter your SSO Passcode** and then click **Sign In**.
+
+    ![MDK](images/1.3.7.png)
+
+7. You are now signed in to the Cloud Foundry. Set the Cloud Foundry target by choosing the appropriate Organization and space from the dropdown menu and then click on **Apply**. Once the Cloud Foundry target is set, the `Cloud Foundry Sign in` tab will automatically close.
+
+    ![MDK](images/1.3.8.png)
+    
+8. Select deploy target as **Mobile Services**.
+
+    ![MDK](images/1.4.23.png) 
+
+9. Select **Standard** Mobile Services Landscape**.
+
+    ![MDK](images/1.4.24.png)  
+
+10. Select the Mobile Services App ID `sap.mobile.user.xyz` assigned to you.
+
+    ![MDK](images/1.4.25.png) 
+
+11. If you want to enable source for debugging the deployed bundle, then choose **Yes**.
+
+    ![MDK](images/1.4.26.png) 
+
+    You should see **Deploy to Mobile Services successfully!** message.
+
+    ![MDK](images/1.4.27.png) 
+
+### Exercise 1.5 - Display the QR code for onboarding the Mobile app
 
 You will now run the initial application on the Mobile client installed on your device by scanning the on-boarding QR code. 
 
@@ -59,41 +123,12 @@ You will now run the initial application on the Mobile client installed on your 
 
     ![MDK](images/1.3.1.png)
 
-2. If prompted with an `Alert` window, dismiss it by clicking on **OK**. 
 
-    ![MDK](images/1.3.2.png)
-
-3. If you don't have an active CF session, you may be prompted to log into Cloud Foundry. If prompted, click **Login** to continue. If not, proceed directly to step 9.
-
-    ![MDK](images/1.3.3.png)
-
-4. Choose the **SSO Passcode** as your authentication method, then click on the highlighted hyperlink. This will open a new browser page.
-
-    ![MDK](images/1.3.4.png)
-
-5. A new tab will open in your browser. Enter  `tdct3ched1-platform` as the origin key for the custom IdP, then click on **Sign in with alternative identity provider**.
-
-    ![MDK](images/1.3.5.png)
-
-    > Cancel the certificate selection if you are prompted to do so in the browser.
-
-6. Copy the Temporary Authentication Code.
-
-    ![MDK](images/1.3.6.png)
-
-7. Switch back to the SAP Business Application Studio page. Paste the copied code into the field labeled **Enter your SSO Passcode** and then click **Sign In**.
-
-    ![MDK](images/1.3.7.png)
-
-8. You are now signed in to the Cloud Foundry. Set the Cloud Foundry target by choosing the appropriate Organization and space from the dropdown menu and then click on **Apply**. Once the Cloud Foundry target is set, the `Cloud Foundry Sign in` tab will automatically close.
-
-    ![MDK](images/1.3.8.png)
-
-9. The On-boarding QR code is now displayed. Leave the Onboarding dialog box open as you proceed to the next step.
+2. The On-boarding QR code is now displayed. Leave the Onboarding dialog box open as you proceed to the next step.
 
     ![MDK](images/1.3.9.png)
 
-### Exercise 1.4 - Run the app
+### Exercise 1.6 - Run the app
 
 | Steps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Android | iOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |
 | --- | --- | --- |

@@ -61,7 +61,7 @@ Before starting on the session exercises, you will first clone the a git reposit
 
     ![MDK](images/1.3.12.png) 
 
-2.  In the `Provide repository URL` field, paste the URL (https://github.com/SAP-samples/teched2021-DEV162) to the session repository and press **Enter**.
+2.  In the `Provide repository URL` field, paste the URL `https://github.com/jitendrakansal/MDKApp.git` to the session repository and press **Enter**.
 
     ![MDK](images/1.3.13.png) 
 
@@ -161,6 +161,10 @@ You will now run the initial application on the Mobile client installed on your 
 | 9. Tap on **Now** to accept the deployed metadata definitions. | ![MDK](images/1.4.16.png) | ![MDK](images/1.4.17.png) |
 | 10. After accepting the app update, the offline store will initialize. You'll see a list of incidents assigned to you and a user menu icon on the main page. The user menu includes the following items:<br/><br/>- **Sync Changes:** This allows you to upload any local changes from the Mobile client to the backend and download any delta changes from the backend to the Mobile client.<br/><br/>- **Support:** This provides an easy way for users to contact support via a contact cell. The contact information is defined in the global settings.<br/><br/>- **Activity Log** option on the Support page allows the user to toggle client logging on or off, set the log level, set tracing categories, toggle OData tracing and, if enabled in the Mobile Services application, upload the current client logs. <br/><br/>- **Check for Updates:** This checks if new Metadata has been deployed to the Mobile Services App Update. If new Metadata is found, it will be downloaded and prompt the user to apply the changes.<br/><br/>- **About:** This page displays the current user/device ID, Application Name, Metadata version, and Client version information.<br/><br/>- **Logout:** This completely resets the client, erasing any downloaded data and application Metadata, and returns the user to the license agreement screen. | ![MDK](images/1.4.18.png) | ![MDK](images/1.4.19.png) |
 | 11. Tap on any of the incidents to navigate to the detail page, where you'll find more information about the incident. You can also access the customer's address via a maps application. If the incident is marked as `closed`, an option to view the image of the defective device will be available. | ![MDK](images/1.4.20.gif) | ![MDK](images/1.4.21.gif) |
+
+
+
+
 
 
 >After scanning and onboarding using the URL, it will be remembered. If you log out and onboard again, you'll be prompted to either continue using the current application or to scan a new QR code.

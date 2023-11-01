@@ -47,7 +47,7 @@ As a technician, you may want to see who reported an incident without navigating
 
 ### Exercise 2.2 - Add a Filter Feedback Bar on the Incident List page
 
-A Filter feedback bar is a horizontal bar that appears above a content list (on a Sectioned Table). It uses area interactive chips to indicate which filters have been applied to the list, and enable users to rapidly apply frequently-used filters.
+A Filter feedback bar is a horizontal bar that appears above a content list (on a Sectioned Table). It uses interactive chips to indicate which filters have been applied to the list, and enables users to rapidly apply frequently-used filters.
 
 1. In the `Incident_List.page`, navigate to the highlighted `Sectioned Table`.
 
@@ -93,7 +93,7 @@ A Profile header UI control furnishes additional information and enhances access
 
     ![MDK](images/2.3.1.png) 
 
-    >The `DesignTimeTarget` property is similar to Target, but is only used for design time.  
+    >The `DesignTimeTarget` property is similar to Target, but is only used for design time. This allows the Object Browser to show a filtered list based on the Design Time Target rather than the full list of all Entities.
 
 2. Select the `customer` expand property, you'll notice that the expression value updates accordingly. Click **OK** to close the Query Options Expression Editor. You can now access and bind customer information to any control on the detail page.
 
@@ -107,7 +107,7 @@ A Profile header UI control furnishes additional information and enhances access
 
     ![MDK](images/2.3.4.png) 
 
-5. Now, you will add the **Profile Header** control to display information such as name, location, and communication methods with a customer. <br/> In the Layout Editor, expand the **Controls** &rarr; **Static Container** group, then drag and drop the **Profile Header** control onto the page area.
+5. Now, you will add the **Profile Header** control to display information such as name, location, and communication methods with a customer. <br/> In the Layout Editor, expand the **Controls** &rarr; **Static Container** group, then drag and drop the **Profile Header** control onto the top of the page area.
 
     ![MDK](images/2.3.5.gif) 
 

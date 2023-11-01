@@ -57,11 +57,17 @@ You will now switch your workspace to the `projects` folder.
 
 Before starting on the session exercises, you will first clone the a git repository into the Business Application Studio workspace.
 
-1. On the `Get Started` page, click `Clone from Git`.
+1. Copy the below URL.
+
+    ```URL
+    https://github.com/jitendrakansal/MDKApp.git
+    ```
+
+2. On the `Get Started` page, click `Clone from Git`.
 
     ![MDK](images/1.3.12.png) 
 
-2.  In the `Provide repository URL` field, paste the URL `https://github.com/jitendrakansal/MDKApp.git` to the session repository and press **Enter**.
+3. In the `Provide repository URL` field, paste the URL and press **Enter**.
 
     ![MDK](images/1.3.13.png) 
 
@@ -117,7 +123,7 @@ You will now deploy the application definitions to SAP Mobile Services.
 
     ![MDK](images/1.4.23.png) 
 
-9. Select **Standard** Mobile Services Landscape**.
+9. Select **Standard** Mobile Services Landscape.
 
     ![MDK](images/1.4.24.png)  
 
@@ -142,7 +148,7 @@ You will now run the initial application on the Mobile client installed on your 
     ![MDK](images/1.3.1.png)
 
 
-2. The On-boarding QR code is now displayed. Leave the Onboarding dialog box open as you proceed to the next step.
+2. The Onboarding QR code is now displayed. Leave the Onboarding dialog box open as you proceed to the next step.
 
     ![MDK](images/1.3.9.png)
 

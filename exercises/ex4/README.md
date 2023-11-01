@@ -27,7 +27,7 @@ The SAP Mobile Start app is your native entry point to SAP’s mobile universe. 
       <img src="./images/img-4-1-2.png" width="100%" />
    </p>
 
-3. On the right-hand side, you can observe content of an S/4HANA system for the **Purchaser** business role has been added by your instructors for this course.
+3. On the right-hand side, you can observe content of an S/4HANA system for the **Purchaser** business role that has been added by your instructors for this course.
 
    <p align="center">
       <img src="./images/img-4-1-3.png" width="100%" />

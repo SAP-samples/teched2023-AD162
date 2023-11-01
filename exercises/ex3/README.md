@@ -55,7 +55,7 @@ In this step, you'll create a Section page with a Form Cell section for the Form
 
     ![MDK](images/3.1.4.gif)
 
-5. In the **Properties** pane, set the **Caption** to **Update Incident Detail**.
+5. In the **Properties** pane, set the **Caption** to `Update Incident Detail`.
 
     ![MDK](images/3.1.5.png)
 
@@ -90,7 +90,7 @@ In this step, you'll create a Section page with a Form Cell section for the Form
     ![MDK](images/3.1.9.png)
 
 10. When updating an incident, the current status will be visible on the list picker.
-    - If the current status is `New`, This is because it wouldn't make sense for them to update the status to `New` again; instead, they would likely choose either `In Process` or `Closed`.
+    - If the current status is `New`, the value will be blank. This is because it wouldn't make sense for them to update the status to `New` again; instead, they would likely choose either `In Process` or `Closed`.
     - If the current status is `In Process`, the technician has two options:
         - They can leave the default value as `In Process`, update the device ID, and continue working on the assigned incident.
         - They can change the status to `Closed` and provide all the necessary information to close the incident.
@@ -213,7 +213,7 @@ While updating the incident details, you want to give the user an option to clos
 
     >System Items are predefined system-supplied icons.
 
-3. Navigate to the **Events** tab. Click the three-dot icon, then click the **Object Browser** and bind it to `CloseModalPage_Cancel.action`. This enables you to close pages with the option to either terminate ongoing events or wait until they are complete.
+3. Navigate to the **Events** tab. Click the three-dot icon, then click the **Object Browser** and bind it to `CloseModalPage_Cancel.action`. This action will close the current page and terminate any ongoing events.
 
     ![MDK](images/3.2.3.png)
 
@@ -276,7 +276,7 @@ To update the `Status` and `DeviceID` properties of the Incident entity, the ODa
 
 8.  You will bind `Status` and `DeviceID` OData properties to respective UI Controls. 
     - Select the `Status` property and click the **link icon** to open the Object Browser. 
-    - In the Object Browser, change the dropdown  to `Controls & ClientData`, and select the  **Current Page** radio button.
+    - In the Object Browser, change the dropdown  to `Control & ClientData`, and select the  **Current Page** radio button.
     - In the search box, start typing `status`. The list will filter to display the matching values. Double-click the **SelectedValue (Value)** entry under the `FCStatus` field and click **OK** to set binding.
 
     ![MDK](images/3.3.8.gif)  
@@ -285,7 +285,7 @@ To update the `Status` and `DeviceID` properties of the Incident entity, the ODa
 
 9. Repeat the above step for DeviceID.
     - Select the `DeviceID` property and click the **link icon** to open the Object Browser. 
-    - Change the drop-down in the Object Browser to `Controls & ClientData`, click the **Current Page** radio button.
+    - Change the drop-down in the Object Browser to `Control & ClientData`, click the **Current Page** radio button.
     - In the search box, start typing `device`. The list will filter down to show the matching values. Double-click the **Value (Value)** entry under the `FCDeviceID` field and click **OK** to set binding.
 
     ![MDK](images/3.3.9.gif) 
@@ -336,28 +336,28 @@ To update the `Status` and `DeviceID` properties of the Incident entity, the ODa
     ![MDK](images/3.3.15.png) 
 
 18.  In **Property and Update Links** step, select the `DeviceImage` property and click the **link icon** to open the object browser.
-    -  Change the drop-down in the Object Browser to `Controls & ClientData`, select the **Current Page** radio button.
+    -  Change the drop-down in the Object Browser to `Control & ClientData`, select the **Current Page** radio button.
     - In the search box, start typing `image`. The list will filter to display the matching values. Double-click the **Value (Value)** entry under the `FCDeviceImage` field and click **OK** to set binding.
 
         ![MDK](images/3.3.16.gif) 
 
-20. Select the `ResolutionSignatureImage` property and click the **link icon** to open the object browser.
-    -  Change the drop-down in the Object Browser to `Controls & ClientData`, select the **Current Page** radio button.
+19. Select the `ResolutionSignatureImage` property and click the **link icon** to open the object browser.
+    -  Change the drop-down in the Object Browser to `Control & ClientData`, select the **Current Page** radio button.
     - In the search box, start typing `signature`. The list will filter to display the matching values. Double-click the **Value (Value)** entry under the `FCCustomerSignature` field and click **OK** to set binding.
     
         ![MDK](images/3.3.17.png) 
 
-21. Click Finish. The action editor will open with the `Incident_UploadStream.action` loaded.
+20. Click Finish. The action editor will open with the `Incident_UploadStream.action` loaded.
 
-22. When the `Incident_UploadStream.action` is executed, you may want to display sucess message and close the page. When it fails due to some reason, you may want to display an error. <br/> In the `Incident_UploadStream.action`, scroll down and expand the **Common Action Properties** section. Click on the link icon for `Success Action` property to open the Object Browser and bind to an existing message action `GenericToastMessage.action`.
+21. When the `Incident_UploadStream.action` is executed, you may want to display sucess message and close the page. When it fails due to some reason, you may want to display an error. <br/> In the `Incident_UploadStream.action`, scroll down and expand the **Common Action Properties** section. Click on the link icon for `Success Action` property to open the Object Browser and bind to an existing message action `GenericToastMessage.action`.
 
     ![MDK](images/3.3.18.png) 
 
-23. Let's override this action's properties and define some specific information about handling `Incident_UploadStream.action`. Click on the override icon to open the override action properties wizard. 
+22. Let's override this action's properties and define some specific information about handling `Incident_UploadStream.action`. Click on the override icon to open the override action properties wizard. 
 
     ![MDK](images/3.3.19.png) 
 
-24. Provide the following information and then click **OK**.
+23. Provide the following information and then click **OK**.
 
     | Property | Value |
     |----|----|
@@ -368,15 +368,15 @@ To update the `Status` and `DeviceID` properties of the Incident entity, the ODa
 
     ![MDK](images/3.3.20.png) 
 
-25. When this `Incident_UploadStream.action` fails due to some reason, you may want to display an error. Click on the link icon for `Failure Action` property to open the Object Browser and bind to an existing message action `GenericMessageBox.action`.
+24. When this `Incident_UploadStream.action` fails due to some reason, you may want to display an error. Click on the link icon for `Failure Action` property to open the Object Browser and bind to an existing message action `GenericMessageBox.action`.
 
     ![MDK](images/3.3.21.png) 
 
-26. Let's override this action's properties and define some specific information when `Incident_UploadStream.action` fails. Click on the override icon to open the override action properties wizard. 
+25. Let's override this action's properties and define some specific information when `Incident_UploadStream.action` fails. Click on the override icon to open the override action properties wizard. 
 
     ![MDK](images/3.3.22.png) 
 
-27. Provide the following information and then click **OK**.
+26. Provide the following information and then click **OK**.
 
     | Property | Value |
     |----|----|
@@ -389,7 +389,7 @@ To update the `Status` and `DeviceID` properties of the Incident entity, the ODa
 
 Ensure the technician can only save an incident entity after providing all the required inputs. If they don't, show them an appropriate message. For instance, if they try to submit a record with an empty status, no Device ID, more than one device image, or without a customer signature, they should be prompted with a warning message.
 
-To achieve this, you'll need to implement a business logic that validates the input values and this logic needs to be bound to the `Save` ActionBar item on the `Incident_Edit.page`.
+To achieve this, you'll need to implement business logic that validates the input values and this logic needs to be bound to the `Save` ActionBar item on the `Incident_Edit.page`.
 
 1. In `Incident_Edit.page`, select the `Save` ActionBar item and navigate to the **Events** tab. Clear the existing binding for the `OnPress` property.
 
@@ -516,7 +516,7 @@ To navigate from the Incident Detail page to a new page for modifying incident i
     }
     ```
 
-7. Swich back to the `Incident_Detail.page`.
+7. Switch back to the `Incident_Detail.page`.
 
 8. Navigate to the **Events** tab. Click the three-dot icon for the `OnPress` property, and select `Create a rule/action`.
 

@@ -40,7 +40,7 @@ The back-end for this Hands-On session (AD162) has been created using SAP Cloud 
   
 ![LCAP View of the Back-End](./assets/images/img-2.png)
 
-This session will focus on building a mobile application using a SAP Cloud Application Programming back-end. To learn more about how to build a back-end using SAP Cloud Application Programming Model, please check out the [session AD161](https://github.com/SAP-samples/teched2023-AD161).
+This session will focus on building a mobile application using a SAP Cloud Application Programming back-end. To learn more about how to build a back-end using SAP Cloud Application Programming Model (CAP), please check out the [session AD161](https://github.com/SAP-samples/teched2023-AD161).
 
 ## Exercises
 | Exercise Number | Title | Estimated Time (mins) |

@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/sap-samples/teched2023-AD162)](https://api.reuse.software/info/github.com/sap-samples/teched2023-AD162)
+
 # AD162 - Develop Mobile Apps with SAP Build Code, Access them via SAP Mobile Start
 
 ## SAP Build Code
